@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-structure/monitorrequest-structure.json",
+  "title": "MonitorRequest",
+  "type": "record",
+  "members": [
+    {
+      "name": "monitorType",
+      "type": "string",
+      "description": "Monitor type (debtor, entity, portfolio)"
+    },
+    {
+      "name": "criteria",
+      "type": "object",
+      "description": "Search criteria for triggering alerts"
+    },
+    {
+      "name": "notificationEmail",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "webhookUrl",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}

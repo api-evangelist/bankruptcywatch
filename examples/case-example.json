@@ -1,0 +1,13 @@
+{
+  "caseId": "example-caseId",
+  "caseNumber": "example-caseNumber",
+  "debtorName": "example-debtorName",
+  "chapter": "example-chapter",
+  "district": "example-district",
+  "dateFiled": "2026-04-19",
+  "status": "example-status",
+  "judge": "example-judge",
+  "trustee": "example-trustee",
+  "assets": "example-assets",
+  "liabilities": "example-liabilities"
+}

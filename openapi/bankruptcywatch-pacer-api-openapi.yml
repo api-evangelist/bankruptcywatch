@@ -1,0 +1,549 @@
+openapi: 3.0.3
+info:
+  title: BankruptcyWatch PACER API
+  description: >-
+    The BankruptcyWatch PACER API provides a comprehensive suite of services for
+    interacting with United States Bankruptcy Court data via PACER (Public Access to
+    Court Electronic Records). The API enables creditors, lenders, and legal teams to
+    search for bankruptcy cases, retrieve case details, file documents, monitor case
+    activity, and automate bankruptcy workflows including Proof of Claim filing and
+    loan restructuring.
+  version: 1.0.0
+  contact:
+    url: https://www.bankruptcywatch.com/api-kickoff
+servers:
+  - url: https://api.bankruptcywatch.com/v1
+    description: BankruptcyWatch API Production
+security:
+  - ApiKeyAuth: []
+paths:
+  /cases/search:
+    get:
+      operationId: searchCases
+      summary: Search Bankruptcy Cases
+      description: Search for bankruptcy cases across all US bankruptcy court districts by debtor name, case number, SSN/EIN, or other criteria.
+      tags:
+        - Cases
+      parameters:
+        - name: debtorName
+          in: query
+          description: Debtor name to search for
+          schema:
+            type: string
+        - name: caseNumber
+          in: query
+          description: PACER case number
+          schema:
+            type: string
+        - name: district
+          in: query
+          description: Bankruptcy court district code
+          schema:
+            type: string
+        - name: chapter
+          in: query
+          description: Bankruptcy chapter (7, 11, 13, etc.)
+          schema:
+            type: string
+        - name: dateFiledFrom
+          in: query
+          description: Filter cases filed on or after this date (ISO 8601)
+          schema:
+            type: string
+            format: date
+        - name: dateFiledTo
+          in: query
+          description: Filter cases filed on or before this date (ISO 8601)
+          schema:
+            type: string
+            format: date
+        - name: status
+          in: query
+          description: Case status filter (open, closed, discharged)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Bankruptcy case search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseSearchResponse'
+        '401':
+          description: Unauthorized — invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cases/{caseId}:
+    get:
+      operationId: getCase
+      summary: Get Case Details
+      description: Retrieve detailed information about a specific bankruptcy case including parties, attorneys, and case status.
+      tags:
+        - Cases
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          description: BankruptcyWatch case identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Case details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Case not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cases/{caseId}/docket:
+    get:
+      operationId: getCaseDocket
+      summary: Get Case Docket
+      description: Retrieve the docket entries for a specific bankruptcy case.
+      tags:
+        - Docket
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          description: BankruptcyWatch case identifier
+          schema:
+            type: string
+        - name: dateFrom
+          in: query
+          description: Filter docket entries from this date
+          schema:
+            type: string
+            format: date
+        - name: dateTo
+          in: query
+          description: Filter docket entries to this date
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Case docket entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocketResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cases/{caseId}/claims:
+    get:
+      operationId: listClaims
+      summary: List Claims
+      description: Retrieve the claims register for a specific bankruptcy case.
+      tags:
+        - Claims
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          description: BankruptcyWatch case identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Claims register
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      operationId: fileProofOfClaim
+      summary: File Proof of Claim
+      description: File a Proof of Claim document with the bankruptcy court for a specific case.
+      tags:
+        - Claims
+      parameters:
+        - name: caseId
+          in: path
+          required: true
+          description: BankruptcyWatch case identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProofOfClaimRequest'
+      responses:
+        '201':
+          description: Proof of Claim filed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProofOfClaimResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /monitors:
+    post:
+      operationId: createMonitor
+      summary: Create Monitor
+      description: Create a monitoring alert to track bankruptcy filings for a specific debtor, entity, or set of criteria.
+      tags:
+        - Monitoring
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonitorRequest'
+      responses:
+        '201':
+          description: Monitor created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listMonitors
+      summary: List Monitors
+      description: Retrieve all active bankruptcy monitors for the account.
+      tags:
+        - Monitoring
+      responses:
+        '200':
+          description: List of monitors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitorListResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /monitors/{monitorId}:
+    get:
+      operationId: getMonitor
+      summary: Get Monitor
+      description: Retrieve details and status of a specific monitor.
+      tags:
+        - Monitoring
+      parameters:
+        - name: monitorId
+          in: path
+          required: true
+          description: Monitor identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Monitor details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteMonitor
+      summary: Delete Monitor
+      description: Remove a bankruptcy monitor.
+      tags:
+        - Monitoring
+      parameters:
+        - name: monitorId
+          in: path
+          required: true
+          description: Monitor identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Monitor deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: BankruptcyWatch API key
+  schemas:
+    Case:
+      type: object
+      description: A US bankruptcy court case
+      properties:
+        caseId:
+          type: string
+          description: BankruptcyWatch internal case ID
+        caseNumber:
+          type: string
+          description: PACER case number
+        debtorName:
+          type: string
+          description: Name of the debtor
+        chapter:
+          type: string
+          description: Bankruptcy chapter (7, 11, 13, etc.)
+        district:
+          type: string
+          description: Bankruptcy court district code
+        dateFiled:
+          type: string
+          format: date
+          description: Date the case was filed
+        status:
+          type: string
+          description: Current case status
+          enum: [open, closed, discharged, dismissed, converted]
+        judge:
+          type: string
+          description: Assigned bankruptcy judge
+        trustee:
+          type: string
+          description: Appointed trustee name
+        assets:
+          type: string
+          description: Asset amount range
+        liabilities:
+          type: string
+          description: Liability amount range
+    CaseSearchResponse:
+      type: object
+      description: Bankruptcy case search results
+      properties:
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        totalCount:
+          type: integer
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+    DocketEntry:
+      type: object
+      description: A single docket entry in a bankruptcy case
+      properties:
+        entryId:
+          type: string
+        caseId:
+          type: string
+        entryNumber:
+          type: integer
+        dateFiled:
+          type: string
+          format: date
+        description:
+          type: string
+        documentUrl:
+          type: string
+        filer:
+          type: string
+    DocketResponse:
+      type: object
+      description: Docket entries response
+      properties:
+        caseId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocketEntry'
+        totalCount:
+          type: integer
+    Claim:
+      type: object
+      description: A claim in a bankruptcy case claims register
+      properties:
+        claimId:
+          type: string
+        caseId:
+          type: string
+        claimNumber:
+          type: string
+        creditorName:
+          type: string
+        claimAmount:
+          type: number
+          format: double
+        securedAmount:
+          type: number
+          format: double
+        unsecuredAmount:
+          type: number
+          format: double
+        status:
+          type: string
+        dateFiled:
+          type: string
+          format: date
+    ClaimsResponse:
+      type: object
+      description: Claims register response
+      properties:
+        caseId:
+          type: string
+        claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        totalCount:
+          type: integer
+    ProofOfClaimRequest:
+      type: object
+      description: Proof of Claim filing request
+      required:
+        - creditorName
+        - claimAmount
+        - basisForClaim
+      properties:
+        creditorName:
+          type: string
+        creditorAddress:
+          type: string
+        claimAmount:
+          type: number
+          format: double
+        securedAmount:
+          type: number
+          format: double
+        basisForClaim:
+          type: string
+        accountNumber:
+          type: string
+        attachmentUrls:
+          type: array
+          items:
+            type: string
+    ProofOfClaimResponse:
+      type: object
+      description: Proof of Claim filing response
+      properties:
+        claimId:
+          type: string
+        caseId:
+          type: string
+        confirmationNumber:
+          type: string
+        status:
+          type: string
+        filedAt:
+          type: string
+          format: date-time
+    MonitorRequest:
+      type: object
+      description: Bankruptcy monitoring request
+      required:
+        - monitorType
+        - criteria
+      properties:
+        monitorType:
+          type: string
+          description: Monitor type (debtor, entity, portfolio)
+        criteria:
+          type: object
+          description: Search criteria for triggering alerts
+        notificationEmail:
+          type: string
+        webhookUrl:
+          type: string
+        label:
+          type: string
+    Monitor:
+      type: object
+      description: A bankruptcy monitoring alert
+      properties:
+        monitorId:
+          type: string
+        monitorType:
+          type: string
+        label:
+          type: string
+        status:
+          type: string
+          enum: [active, paused, deleted]
+        createdAt:
+          type: string
+          format: date-time
+        lastTriggeredAt:
+          type: string
+          format: date-time
+        alertCount:
+          type: integer
+    MonitorListResponse:
+      type: object
+      description: List of monitors
+      properties:
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monitor'
+        totalCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string

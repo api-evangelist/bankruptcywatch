@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-structure/monitorlistresponse-structure.json",
+  "title": "MonitorListResponse",
+  "type": "record",
+  "members": [
+    {
+      "name": "monitors",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "totalCount",
+      "type": "integer",
+      "description": ""
+    }
+  ]
+}

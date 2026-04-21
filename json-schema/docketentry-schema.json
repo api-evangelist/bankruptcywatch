@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/docketentry-schema.json",
+  "title": "DocketEntry",
+  "type": "object",
+  "description": "A single docket entry in a bankruptcy case",
+  "properties": {
+    "entryId": {
+      "type": "string"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "entryNumber": {
+      "type": "integer"
+    },
+    "dateFiled": {
+      "type": "string",
+      "format": "date"
+    },
+    "description": {
+      "type": "string"
+    },
+    "documentUrl": {
+      "type": "string"
+    },
+    "filer": {
+      "type": "string"
+    }
+  }
+}

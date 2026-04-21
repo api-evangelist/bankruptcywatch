@@ -1,0 +1,105 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "BankruptcyWatch Bankruptcy Monitoring"
+  description: >-
+    BankruptcyWatch bankruptcy monitoring and case management workflow for creditors,
+    lenders, and legal teams. Covers case search, docket retrieval, claims management,
+    Proof of Claim filing, and automated bankruptcy monitoring alerts.
+  tags:
+    - BankruptcyWatch
+    - Bankruptcy
+    - PACER
+    - Creditor
+    - Legal
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      BANKRUPTCYWATCH_API_KEY: BANKRUPTCYWATCH_API_KEY
+
+capability:
+  consumes:
+    - import: bankruptcywatch-pacer
+      location: ./shared/pacer-api.yaml
+
+  exposes:
+    - type: mcp
+      port: 9080
+      namespace: bankruptcywatch-mcp
+      transport: http
+      description: "MCP server for AI-assisted bankruptcy monitoring and case research."
+      tools:
+        - name: search-bankruptcy-cases
+          description: Search for bankruptcy cases across all US bankruptcy court districts
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "bankruptcywatch-pacer.searchCases"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-bankruptcy-case
+          description: Get detailed information about a specific bankruptcy case
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "bankruptcywatch-pacer.getCase"
+          with:
+            caseId: "tools.caseId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-case-docket
+          description: Retrieve docket entries for a bankruptcy case
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "bankruptcywatch-pacer.getCaseDocket"
+          with:
+            caseId: "tools.caseId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-case-claims
+          description: List claims register for a bankruptcy case
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "bankruptcywatch-pacer.listClaims"
+          with:
+            caseId: "tools.caseId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: file-proof-of-claim
+          description: File a Proof of Claim for a bankruptcy case
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "bankruptcywatch-pacer.fileProofOfClaim"
+          with:
+            caseId: "tools.caseId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-bankruptcy-monitor
+          description: Create a bankruptcy monitoring alert for a debtor or entity
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "bankruptcywatch-pacer.createMonitor"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-monitors
+          description: List all active bankruptcy monitoring alerts
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "bankruptcywatch-pacer.listMonitors"
+          outputParameters:
+            - type: object
+              mapping: "$."

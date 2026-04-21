@@ -1,0 +1,137 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "BankruptcyWatch"
+  description: "Taxonomy for the BankruptcyWatch PACER API covering bankruptcy case research, claims management, and monitoring."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: bankruptcywatch-pacer
+      label: BankruptcyWatch PACER API
+      version: "1.0"
+      baseUrl: https://api.bankruptcywatch.com/v1
+      status: active
+
+  resources:
+    - name: cases
+      description: US bankruptcy court cases retrieved via PACER
+      apis: [bankruptcywatch-pacer]
+      actions: [search, get, get-docket]
+    - name: claims
+      description: Claims register entries and Proof of Claim filings
+      apis: [bankruptcywatch-pacer]
+      actions: [list, file]
+    - name: monitors
+      description: Automated bankruptcy monitoring alerts
+      apis: [bankruptcywatch-pacer]
+      actions: [create, list, get, delete]
+
+  actions:
+    - name: search
+      description: Search for bankruptcy cases
+      methods: [GET]
+      pattern: read
+    - name: get
+      description: Retrieve a specific resource
+      methods: [GET]
+      pattern: read
+    - name: get-docket
+      description: Retrieve case docket entries
+      methods: [GET]
+      pattern: read
+    - name: list
+      description: List resources
+      methods: [GET]
+      pattern: read
+    - name: file
+      description: File a court document
+      methods: [POST]
+      pattern: write
+    - name: create
+      description: Create a new resource
+      methods: [POST]
+      pattern: write
+    - name: delete
+      description: Remove a resource
+      methods: [DELETE]
+      pattern: write
+
+  schemas:
+    core:
+      - name: Case
+        description: A US bankruptcy court case
+        key_properties: [caseId, caseNumber, debtorName, chapter, district, dateFiled, status]
+      - name: Claim
+        description: A claim in the bankruptcy claims register
+        key_properties: [claimId, caseId, creditorName, claimAmount, status, dateFiled]
+      - name: Monitor
+        description: An automated bankruptcy monitoring alert
+        key_properties: [monitorId, monitorType, label, status, createdAt]
+
+  authentication:
+    schemes:
+      - name: ApiKeyAuth
+        type: apiKey
+        description: BankruptcyWatch API key passed in X-API-Key header
+
+capability:
+  workflows:
+    - name: Bankruptcy Monitoring
+      file: capabilities/bankruptcy-monitoring.yaml
+      description: Bankruptcy case research, claims management, and automated monitoring
+      apis_combined: [bankruptcywatch-pacer]
+      tool_count: 7
+      personas: [Creditor, Loan Officer, Bankruptcy Attorney]
+      domains: [Bankruptcy, Legal, Lending]
+
+  personas:
+    - id: creditor
+      name: Creditor
+      description: Business or individual owed money by a bankruptcy filer
+      workflows: [Bankruptcy Monitoring]
+    - id: loan-officer
+      name: Loan Officer
+      description: Lender monitoring borrowers for bankruptcy filings
+      workflows: [Bankruptcy Monitoring]
+    - id: bankruptcy-attorney
+      name: Bankruptcy Attorney
+      description: Attorney managing creditor representation in bankruptcy proceedings
+      workflows: [Bankruptcy Monitoring]
+
+  domains:
+    - name: Bankruptcy
+      description: US bankruptcy court cases and proceedings
+      resources: [cases, claims]
+      workflows: [Bankruptcy Monitoring]
+    - name: Monitoring
+      description: Automated alerts for bankruptcy filings
+      resources: [monitors]
+      workflows: [Bankruptcy Monitoring]
+
+  namespaces:
+    - namespace: bankruptcywatch-pacer
+      type: consumed
+    - namespace: bankruptcywatch-mcp
+      type: mcp-exposed
+      port: 9080
+
+  binds:
+    - name: BANKRUPTCYWATCH_API_KEY
+      description: BankruptcyWatch API key
+      workflows: [Bankruptcy Monitoring]
+
+crossReference:
+  - resource: cases
+    operations: [searchCases, getCase, getCaseDocket]
+    workflows: [Bankruptcy Monitoring]
+    personas: [Creditor, Loan Officer, Bankruptcy Attorney]
+  - resource: claims
+    operations: [listClaims, fileProofOfClaim]
+    workflows: [Bankruptcy Monitoring]
+    personas: [Creditor, Bankruptcy Attorney]
+  - resource: monitors
+    operations: [createMonitor, listMonitors, getMonitor, deleteMonitor]
+    workflows: [Bankruptcy Monitoring]
+    personas: [Creditor, Loan Officer]

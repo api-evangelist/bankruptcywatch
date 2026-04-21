@@ -1,0 +1,9 @@
+{
+  "monitorId": "example-monitorId",
+  "monitorType": "example-monitorType",
+  "label": "example-label",
+  "status": "example-status",
+  "createdAt": "2026-04-19T12:00:00Z",
+  "lastTriggeredAt": "2026-04-19T12:00:00Z",
+  "alertCount": 0
+}

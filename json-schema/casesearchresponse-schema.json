@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/casesearchresponse-schema.json",
+  "title": "CaseSearchResponse",
+  "type": "object",
+  "description": "Bankruptcy case search results",
+  "properties": {
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Case"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "pageSize": {
+      "type": "integer"
+    },
+    "offset": {
+      "type": "integer"
+    }
+  }
+}

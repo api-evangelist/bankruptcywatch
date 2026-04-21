@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/claim-schema.json",
+  "title": "Claim",
+  "type": "object",
+  "description": "A claim in a bankruptcy case claims register",
+  "properties": {
+    "claimId": {
+      "type": "string"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "claimNumber": {
+      "type": "string"
+    },
+    "creditorName": {
+      "type": "string"
+    },
+    "claimAmount": {
+      "type": "number",
+      "format": "double"
+    },
+    "securedAmount": {
+      "type": "number",
+      "format": "double"
+    },
+    "unsecuredAmount": {
+      "type": "number",
+      "format": "double"
+    },
+    "status": {
+      "type": "string"
+    },
+    "dateFiled": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

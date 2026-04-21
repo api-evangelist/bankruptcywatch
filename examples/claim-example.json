@@ -1,0 +1,11 @@
+{
+  "claimId": "example-claimId",
+  "caseId": "example-caseId",
+  "claimNumber": "example-claimNumber",
+  "creditorName": "example-creditorName",
+  "claimAmount": 0,
+  "securedAmount": 0,
+  "unsecuredAmount": 0,
+  "status": "example-status",
+  "dateFiled": "2026-04-19"
+}

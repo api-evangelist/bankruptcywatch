@@ -1,0 +1,232 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "bwapi": "https://api-evangelist.github.io/bankruptcywatch/vocab#",
+    "Case": {
+      "@id": "bwapi:Case"
+    },
+    "caseId": {
+      "@id": "bwapi:caseId",
+      "@type": "xsd:string"
+    },
+    "caseNumber": {
+      "@id": "bwapi:caseNumber",
+      "@type": "xsd:string"
+    },
+    "debtorName": {
+      "@id": "bwapi:debtorName",
+      "@type": "xsd:string"
+    },
+    "chapter": {
+      "@id": "bwapi:chapter",
+      "@type": "xsd:string"
+    },
+    "district": {
+      "@id": "bwapi:district",
+      "@type": "xsd:string"
+    },
+    "dateFiled": {
+      "@id": "bwapi:dateFiled",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "bwapi:status",
+      "@type": "xsd:string"
+    },
+    "judge": {
+      "@id": "bwapi:judge",
+      "@type": "xsd:string"
+    },
+    "trustee": {
+      "@id": "bwapi:trustee",
+      "@type": "xsd:string"
+    },
+    "assets": {
+      "@id": "bwapi:assets",
+      "@type": "xsd:string"
+    },
+    "liabilities": {
+      "@id": "bwapi:liabilities",
+      "@type": "xsd:string"
+    },
+    "CaseSearchResponse": {
+      "@id": "bwapi:CaseSearchResponse"
+    },
+    "cases": {
+      "@id": "bwapi:cases",
+      "@type": "xsd:string"
+    },
+    "totalCount": {
+      "@id": "bwapi:totalCount",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "bwapi:pageSize",
+      "@type": "xsd:integer"
+    },
+    "offset": {
+      "@id": "bwapi:offset",
+      "@type": "xsd:integer"
+    },
+    "DocketEntry": {
+      "@id": "bwapi:DocketEntry"
+    },
+    "entryId": {
+      "@id": "bwapi:entryId",
+      "@type": "xsd:string"
+    },
+    "entryNumber": {
+      "@id": "bwapi:entryNumber",
+      "@type": "xsd:integer"
+    },
+    "description": {
+      "@id": "bwapi:description",
+      "@type": "xsd:string"
+    },
+    "documentUrl": {
+      "@id": "bwapi:documentUrl",
+      "@type": "xsd:string"
+    },
+    "filer": {
+      "@id": "bwapi:filer",
+      "@type": "xsd:string"
+    },
+    "DocketResponse": {
+      "@id": "bwapi:DocketResponse"
+    },
+    "entries": {
+      "@id": "bwapi:entries",
+      "@type": "xsd:string"
+    },
+    "Claim": {
+      "@id": "bwapi:Claim"
+    },
+    "claimId": {
+      "@id": "bwapi:claimId",
+      "@type": "xsd:string"
+    },
+    "claimNumber": {
+      "@id": "bwapi:claimNumber",
+      "@type": "xsd:string"
+    },
+    "creditorName": {
+      "@id": "bwapi:creditorName",
+      "@type": "xsd:string"
+    },
+    "claimAmount": {
+      "@id": "bwapi:claimAmount",
+      "@type": "xsd:decimal"
+    },
+    "securedAmount": {
+      "@id": "bwapi:securedAmount",
+      "@type": "xsd:decimal"
+    },
+    "unsecuredAmount": {
+      "@id": "bwapi:unsecuredAmount",
+      "@type": "xsd:decimal"
+    },
+    "ClaimsResponse": {
+      "@id": "bwapi:ClaimsResponse"
+    },
+    "claims": {
+      "@id": "bwapi:claims",
+      "@type": "xsd:string"
+    },
+    "ProofOfClaimRequest": {
+      "@id": "bwapi:ProofOfClaimRequest"
+    },
+    "creditorAddress": {
+      "@id": "bwapi:creditorAddress",
+      "@type": "xsd:string"
+    },
+    "basisForClaim": {
+      "@id": "bwapi:basisForClaim",
+      "@type": "xsd:string"
+    },
+    "accountNumber": {
+      "@id": "bwapi:accountNumber",
+      "@type": "xsd:string"
+    },
+    "attachmentUrls": {
+      "@id": "bwapi:attachmentUrls",
+      "@type": "xsd:string"
+    },
+    "ProofOfClaimResponse": {
+      "@id": "bwapi:ProofOfClaimResponse"
+    },
+    "confirmationNumber": {
+      "@id": "bwapi:confirmationNumber",
+      "@type": "xsd:string"
+    },
+    "filedAt": {
+      "@id": "bwapi:filedAt",
+      "@type": "xsd:string"
+    },
+    "MonitorRequest": {
+      "@id": "bwapi:MonitorRequest"
+    },
+    "monitorType": {
+      "@id": "bwapi:monitorType",
+      "@type": "xsd:string"
+    },
+    "criteria": {
+      "@id": "bwapi:criteria",
+      "@type": "xsd:string"
+    },
+    "notificationEmail": {
+      "@id": "bwapi:notificationEmail",
+      "@type": "xsd:string"
+    },
+    "webhookUrl": {
+      "@id": "bwapi:webhookUrl",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "bwapi:label",
+      "@type": "xsd:string"
+    },
+    "Monitor": {
+      "@id": "bwapi:Monitor"
+    },
+    "monitorId": {
+      "@id": "bwapi:monitorId",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "bwapi:createdAt",
+      "@type": "xsd:string"
+    },
+    "lastTriggeredAt": {
+      "@id": "bwapi:lastTriggeredAt",
+      "@type": "xsd:string"
+    },
+    "alertCount": {
+      "@id": "bwapi:alertCount",
+      "@type": "xsd:integer"
+    },
+    "MonitorListResponse": {
+      "@id": "bwapi:MonitorListResponse"
+    },
+    "monitors": {
+      "@id": "bwapi:monitors",
+      "@type": "xsd:string"
+    },
+    "ErrorResponse": {
+      "@id": "bwapi:ErrorResponse"
+    },
+    "errorCode": {
+      "@id": "bwapi:errorCode",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "bwapi:message",
+      "@type": "xsd:string"
+    },
+    "requestId": {
+      "@id": "bwapi:requestId",
+      "@type": "xsd:string"
+    }
+  }
+}

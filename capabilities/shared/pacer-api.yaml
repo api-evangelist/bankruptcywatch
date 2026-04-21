@@ -1,0 +1,55 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  namespace: bankruptcywatch-pacer
+  label: BankruptcyWatch PACER API
+  baseUrl: https://api.bankruptcywatch.com/v1
+
+authentication:
+  - type: apiKey
+    in: header
+    name: X-API-Key
+
+operations:
+  - operationId: searchCases
+    method: GET
+    path: /cases/search
+    description: Search bankruptcy cases across US courts
+  - operationId: getCase
+    method: GET
+    path: /cases/{caseId}
+    description: Get case details
+    pathParameters: [caseId]
+  - operationId: getCaseDocket
+    method: GET
+    path: /cases/{caseId}/docket
+    description: Get case docket entries
+    pathParameters: [caseId]
+  - operationId: listClaims
+    method: GET
+    path: /cases/{caseId}/claims
+    description: List claims register
+    pathParameters: [caseId]
+  - operationId: fileProofOfClaim
+    method: POST
+    path: /cases/{caseId}/claims
+    description: File a Proof of Claim
+    pathParameters: [caseId]
+  - operationId: createMonitor
+    method: POST
+    path: /monitors
+    description: Create a bankruptcy monitor
+  - operationId: listMonitors
+    method: GET
+    path: /monitors
+    description: List all monitors
+  - operationId: getMonitor
+    method: GET
+    path: /monitors/{monitorId}
+    description: Get monitor details
+    pathParameters: [monitorId]
+  - operationId: deleteMonitor
+    method: DELETE
+    path: /monitors/{monitorId}
+    description: Delete a monitor
+    pathParameters: [monitorId]

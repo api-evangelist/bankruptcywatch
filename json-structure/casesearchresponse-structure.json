@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-structure/casesearchresponse-structure.json",
+  "title": "CaseSearchResponse",
+  "type": "record",
+  "members": [
+    {
+      "name": "cases",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "totalCount",
+      "type": "integer",
+      "description": ""
+    },
+    {
+      "name": "pageSize",
+      "type": "integer",
+      "description": ""
+    },
+    {
+      "name": "offset",
+      "type": "integer",
+      "description": ""
+    }
+  ]
+}

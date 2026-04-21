@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/docketresponse-schema.json",
+  "title": "DocketResponse",
+  "type": "object",
+  "description": "Docket entries response",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DocketEntry"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

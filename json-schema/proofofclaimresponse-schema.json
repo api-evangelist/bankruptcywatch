@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/proofofclaimresponse-schema.json",
+  "title": "ProofOfClaimResponse",
+  "type": "object",
+  "description": "Proof of Claim filing response",
+  "properties": {
+    "claimId": {
+      "type": "string"
+    },
+    "caseId": {
+      "type": "string"
+    },
+    "confirmationNumber": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "filedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

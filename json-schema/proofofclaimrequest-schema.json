@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/proofofclaimrequest-schema.json",
+  "title": "ProofOfClaimRequest",
+  "type": "object",
+  "description": "Proof of Claim filing request",
+  "required": [
+    "creditorName",
+    "claimAmount",
+    "basisForClaim"
+  ],
+  "properties": {
+    "creditorName": {
+      "type": "string"
+    },
+    "creditorAddress": {
+      "type": "string"
+    },
+    "claimAmount": {
+      "type": "number",
+      "format": "double"
+    },
+    "securedAmount": {
+      "type": "number",
+      "format": "double"
+    },
+    "basisForClaim": {
+      "type": "string"
+    },
+    "accountNumber": {
+      "type": "string"
+    },
+    "attachmentUrls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-schema/claimsresponse-schema.json",
+  "title": "ClaimsResponse",
+  "type": "object",
+  "description": "Claims register response",
+  "properties": {
+    "caseId": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Claim"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

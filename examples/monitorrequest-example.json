@@ -1,0 +1,7 @@
+{
+  "monitorType": "example-monitorType",
+  "criteria": {},
+  "notificationEmail": "example-notificationEmail",
+  "webhookUrl": "example-webhookUrl",
+  "label": "example-label"
+}

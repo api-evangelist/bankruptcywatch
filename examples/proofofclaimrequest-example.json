@@ -1,0 +1,9 @@
+{
+  "creditorName": "example-creditorName",
+  "creditorAddress": "example-creditorAddress",
+  "claimAmount": 0,
+  "securedAmount": 0,
+  "basisForClaim": "example-basisForClaim",
+  "accountNumber": "example-accountNumber",
+  "attachmentUrls": []
+}

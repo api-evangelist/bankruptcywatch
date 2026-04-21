@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-structure/docketentry-structure.json",
+  "title": "DocketEntry",
+  "type": "record",
+  "members": [
+    {
+      "name": "entryId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "caseId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "entryNumber",
+      "type": "integer",
+      "description": ""
+    },
+    {
+      "name": "dateFiled",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "documentUrl",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "filer",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}

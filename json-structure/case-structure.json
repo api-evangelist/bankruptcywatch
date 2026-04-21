@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/bankruptcywatch/json-structure/case-structure.json",
+  "title": "Case",
+  "type": "record",
+  "members": [
+    {
+      "name": "caseId",
+      "type": "string",
+      "description": "BankruptcyWatch internal case ID"
+    },
+    {
+      "name": "caseNumber",
+      "type": "string",
+      "description": "PACER case number"
+    },
+    {
+      "name": "debtorName",
+      "type": "string",
+      "description": "Name of the debtor"
+    },
+    {
+      "name": "chapter",
+      "type": "string",
+      "description": "Bankruptcy chapter (7, 11, 13, etc.)"
+    },
+    {
+      "name": "district",
+      "type": "string",
+      "description": "Bankruptcy court district code"
+    },
+    {
+      "name": "dateFiled",
+      "type": "string",
+      "description": "Date the case was filed"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Current case status"
+    },
+    {
+      "name": "judge",
+      "type": "string",
+      "description": "Assigned bankruptcy judge"
+    },
+    {
+      "name": "trustee",
+      "type": "string",
+      "description": "Appointed trustee name"
+    },
+    {
+      "name": "assets",
+      "type": "string",
+      "description": "Asset amount range"
+    },
+    {
+      "name": "liabilities",
+      "type": "string",
+      "description": "Liability amount range"
+    }
+  ]
+}
