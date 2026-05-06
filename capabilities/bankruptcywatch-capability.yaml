@@ -1,0 +1,475 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: BankruptcyWatch PACER API
+  description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States
+    Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal
+    teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy
+    workflows including Proof of Claim filing and loan restructuring.
+  tags:
+  - Bankruptcywatch
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: bankruptcywatch
+    baseUri: https://api.bankruptcywatch.com/v1
+    description: BankruptcyWatch PACER API HTTP API.
+    authentication:
+      type: apikey
+      in: header
+      name: X-API-Key
+      value: '{{BANKRUPTCYWATCH_TOKEN}}'
+    resources:
+    - name: cases-search
+      path: /cases/search
+      operations:
+      - name: searchcases
+        method: GET
+        description: Search Bankruptcy Cases
+        inputParameters:
+        - name: debtorName
+          in: query
+          type: string
+          description: Debtor name to search for
+        - name: caseNumber
+          in: query
+          type: string
+          description: PACER case number
+        - name: district
+          in: query
+          type: string
+          description: Bankruptcy court district code
+        - name: chapter
+          in: query
+          type: string
+          description: Bankruptcy chapter (7, 11, 13, etc.)
+        - name: dateFiledFrom
+          in: query
+          type: string
+          description: Filter cases filed on or after this date (ISO 8601)
+        - name: dateFiledTo
+          in: query
+          type: string
+          description: Filter cases filed on or before this date (ISO 8601)
+        - name: status
+          in: query
+          type: string
+          description: Case status filter (open, closed, discharged)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cases-caseid
+      path: /cases/{caseId}
+      operations:
+      - name: getcase
+        method: GET
+        description: Get Case Details
+        inputParameters:
+        - name: caseId
+          in: path
+          type: string
+          required: true
+          description: BankruptcyWatch case identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cases-caseid-docket
+      path: /cases/{caseId}/docket
+      operations:
+      - name: getcasedocket
+        method: GET
+        description: Get Case Docket
+        inputParameters:
+        - name: caseId
+          in: path
+          type: string
+          required: true
+          description: BankruptcyWatch case identifier
+        - name: dateFrom
+          in: query
+          type: string
+          description: Filter docket entries from this date
+        - name: dateTo
+          in: query
+          type: string
+          description: Filter docket entries to this date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: cases-caseid-claims
+      path: /cases/{caseId}/claims
+      operations:
+      - name: listclaims
+        method: GET
+        description: List Claims
+        inputParameters:
+        - name: caseId
+          in: path
+          type: string
+          required: true
+          description: BankruptcyWatch case identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: fileproofofclaim
+        method: POST
+        description: File Proof of Claim
+        inputParameters:
+        - name: caseId
+          in: path
+          type: string
+          required: true
+          description: BankruptcyWatch case identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: monitors
+      path: /monitors
+      operations:
+      - name: createmonitor
+        method: POST
+        description: Create Monitor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: listmonitors
+        method: GET
+        description: List Monitors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: monitors-monitorid
+      path: /monitors/{monitorId}
+      operations:
+      - name: getmonitor
+        method: GET
+        description: Get Monitor
+        inputParameters:
+        - name: monitorId
+          in: path
+          type: string
+          required: true
+          description: Monitor identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemonitor
+        method: DELETE
+        description: Delete Monitor
+        inputParameters:
+        - name: monitorId
+          in: path
+          type: string
+          required: true
+          description: Monitor identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: bankruptcywatch-rest
+    description: REST adapter for BankruptcyWatch PACER API.
+    resources:
+    - path: /cases/search
+      name: searchcases
+      operations:
+      - method: GET
+        name: searchcases
+        description: Search Bankruptcy Cases
+        call: bankruptcywatch.searchcases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cases/{caseId}
+      name: getcase
+      operations:
+      - method: GET
+        name: getcase
+        description: Get Case Details
+        call: bankruptcywatch.getcase
+        with:
+          caseId: rest.caseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cases/{caseId}/docket
+      name: getcasedocket
+      operations:
+      - method: GET
+        name: getcasedocket
+        description: Get Case Docket
+        call: bankruptcywatch.getcasedocket
+        with:
+          caseId: rest.caseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cases/{caseId}/claims
+      name: listclaims
+      operations:
+      - method: GET
+        name: listclaims
+        description: List Claims
+        call: bankruptcywatch.listclaims
+        with:
+          caseId: rest.caseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /cases/{caseId}/claims
+      name: fileproofofclaim
+      operations:
+      - method: POST
+        name: fileproofofclaim
+        description: File Proof of Claim
+        call: bankruptcywatch.fileproofofclaim
+        with:
+          caseId: rest.caseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /monitors
+      name: createmonitor
+      operations:
+      - method: POST
+        name: createmonitor
+        description: Create Monitor
+        call: bankruptcywatch.createmonitor
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /monitors
+      name: listmonitors
+      operations:
+      - method: GET
+        name: listmonitors
+        description: List Monitors
+        call: bankruptcywatch.listmonitors
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /monitors/{monitorId}
+      name: getmonitor
+      operations:
+      - method: GET
+        name: getmonitor
+        description: Get Monitor
+        call: bankruptcywatch.getmonitor
+        with:
+          monitorId: rest.monitorId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /monitors/{monitorId}
+      name: deletemonitor
+      operations:
+      - method: DELETE
+        name: deletemonitor
+        description: Delete Monitor
+        call: bankruptcywatch.deletemonitor
+        with:
+          monitorId: rest.monitorId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: bankruptcywatch-mcp
+    transport: http
+    description: MCP adapter for BankruptcyWatch PACER API for AI agent use.
+    tools:
+    - name: searchcases
+      description: Search Bankruptcy Cases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.searchcases
+      with:
+        debtorName: tools.debtorName
+        caseNumber: tools.caseNumber
+        district: tools.district
+        chapter: tools.chapter
+        dateFiledFrom: tools.dateFiledFrom
+        dateFiledTo: tools.dateFiledTo
+        status: tools.status
+      inputParameters:
+      - name: debtorName
+        type: string
+        description: Debtor name to search for
+      - name: caseNumber
+        type: string
+        description: PACER case number
+      - name: district
+        type: string
+        description: Bankruptcy court district code
+      - name: chapter
+        type: string
+        description: Bankruptcy chapter (7, 11, 13, etc.)
+      - name: dateFiledFrom
+        type: string
+        description: Filter cases filed on or after this date (ISO 8601)
+      - name: dateFiledTo
+        type: string
+        description: Filter cases filed on or before this date (ISO 8601)
+      - name: status
+        type: string
+        description: Case status filter (open, closed, discharged)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcase
+      description: Get Case Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.getcase
+      with:
+        caseId: tools.caseId
+      inputParameters:
+      - name: caseId
+        type: string
+        description: BankruptcyWatch case identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcasedocket
+      description: Get Case Docket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.getcasedocket
+      with:
+        caseId: tools.caseId
+        dateFrom: tools.dateFrom
+        dateTo: tools.dateTo
+      inputParameters:
+      - name: caseId
+        type: string
+        description: BankruptcyWatch case identifier
+        required: true
+      - name: dateFrom
+        type: string
+        description: Filter docket entries from this date
+      - name: dateTo
+        type: string
+        description: Filter docket entries to this date
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listclaims
+      description: List Claims
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.listclaims
+      with:
+        caseId: tools.caseId
+      inputParameters:
+      - name: caseId
+        type: string
+        description: BankruptcyWatch case identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fileproofofclaim
+      description: File Proof of Claim
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bankruptcywatch.fileproofofclaim
+      with:
+        caseId: tools.caseId
+      inputParameters:
+      - name: caseId
+        type: string
+        description: BankruptcyWatch case identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmonitor
+      description: Create Monitor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: bankruptcywatch.createmonitor
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmonitors
+      description: List Monitors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.listmonitors
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmonitor
+      description: Get Monitor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bankruptcywatch.getmonitor
+      with:
+        monitorId: tools.monitorId
+      inputParameters:
+      - name: monitorId
+        type: string
+        description: Monitor identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemonitor
+      description: Delete Monitor
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: bankruptcywatch.deletemonitor
+      with:
+        monitorId: tools.monitorId
+      inputParameters:
+      - name: monitorId
+        type: string
+        description: Monitor identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    BANKRUPTCYWATCH_TOKEN: BANKRUPTCYWATCH_TOKEN
