@@ -62,7 +62,7 @@ common:
     url: vocabulary/bankruptcywatch-vocabulary.yaml
   - type: NaftikoCapability
     url: capabilities/bankruptcy-monitoring.yaml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/bankruptcywatch-context.jsonld
   - name: Features
     type: Features
