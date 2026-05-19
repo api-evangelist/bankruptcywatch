@@ -1,0 +1,184 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: BankruptcyWatch PACER API — Monitoring
+  description: 'BankruptcyWatch PACER API — Monitoring. 4 operations. Lead operation: Create Monitor. Self-contained Naftiko
+    capability covering one Bankruptcywatch business surface.'
+  tags:
+  - Bankruptcywatch
+  - Monitoring
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    BANKRUPTCYWATCH_API_KEY: BANKRUPTCYWATCH_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pacer-monitoring
+    baseUri: https://api.bankruptcywatch.com/v1
+    description: BankruptcyWatch PACER API — Monitoring business capability. Self-contained, no shared references.
+    resources:
+    - name: monitors
+      path: /monitors
+      operations:
+      - name: createmonitor
+        method: POST
+        description: Create Monitor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listmonitors
+        method: GET
+        description: List Monitors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: monitors-monitorId
+      path: /monitors/{monitorId}
+      operations:
+      - name: getmonitor
+        method: GET
+        description: Get Monitor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: monitorId
+          in: path
+          type: string
+          description: Monitor identifier
+          required: true
+      - name: deletemonitor
+        method: DELETE
+        description: Delete Monitor
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: monitorId
+          in: path
+          type: string
+          description: Monitor identifier
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-Key
+      value: '{{env.BANKRUPTCYWATCH_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: pacer-monitoring-rest
+    port: 8080
+    description: REST adapter for BankruptcyWatch PACER API — Monitoring. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/monitors
+      name: monitors
+      description: REST surface for monitors.
+      operations:
+      - method: POST
+        name: createmonitor
+        description: Create Monitor
+        call: pacer-monitoring.createmonitor
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listmonitors
+        description: List Monitors
+        call: pacer-monitoring.listmonitors
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monitors/{monitorid}
+      name: monitors-monitorid
+      description: REST surface for monitors-monitorId.
+      operations:
+      - method: GET
+        name: getmonitor
+        description: Get Monitor
+        call: pacer-monitoring.getmonitor
+        with:
+          monitorId: rest.monitorId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemonitor
+        description: Delete Monitor
+        call: pacer-monitoring.deletemonitor
+        with:
+          monitorId: rest.monitorId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pacer-monitoring-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for BankruptcyWatch PACER API — Monitoring. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: create-monitor
+      description: Create Monitor
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: pacer-monitoring.createmonitor
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-monitors
+      description: List Monitors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pacer-monitoring.listmonitors
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-monitor
+      description: Get Monitor
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pacer-monitoring.getmonitor
+      with:
+        monitorId: tools.monitorId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-monitor
+      description: Delete Monitor
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: pacer-monitoring.deletemonitor
+      with:
+        monitorId: tools.monitorId
+      outputParameters:
+      - type: object
+        mapping: $.
