@@ -1,99 +1,70 @@
 # BankruptcyWatch (bankruptcywatch)
-BankruptcyWatch is the proven creditor bankruptcy platform built with machine learning and intelligent automation. The PACER API provides access to US bankruptcy court data enabling creditors, lenders, and legal teams to search for cases, retrieve dockets, manage claims, file Proof of Claim documents, and automate bankruptcy monitoring.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/bankruptcywatch/refs/heads/main/apis.yml)
+BankruptcyWatch is the proven creditor bankruptcy platform built with machine learning and intelligent automation to elevate every bankruptcy interaction. The PACER API provides access to US bankruptcy court data enabling creditors, lenders, and legal teams to search for cases, retrieve dockets, manage claims, file Proof of Claim documents, and automate bankruptcy monitoring across all federal bankruptcy court districts.
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bankruptcywatch/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bankruptcywatch/refs/heads/main/apis.yml)
 
-## Tags:
+## Scope
 
- - Bankruptcy, Compliance, Court Data, Legal, Lending, PACER
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Bankruptcy
+- Compliance
+- Court Data
+- Legal
+- Lending
+- PACER
 
 ## Timestamps
 
 - **Created:** 2024-11-25
-- **Modified:** 2026-04-19
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### BankruptcyWatch PACER API
-Comprehensive collection of services for interacting with US bankruptcy court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim documents, and set up automated monitoring alerts.
 
-**Human URL:** [https://www.bankruptcywatch.com/products/pacer-api](https://www.bankruptcywatch.com/products/pacer-api)
+The BankruptcyWatch PACER API provides a comprehensive collection of services for interacting with US bankruptcy court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim documents, and set up automated monitoring alerts for bankruptcy filings.
 
-#### Tags:
+- **Human URL:** [https://www.bankruptcywatch.com/products/pacer-api](https://www.bankruptcywatch.com/products/pacer-api)
+- **Base URL:** `https://api.bankruptcywatch.com/v1`
 
- - Bankruptcy, Claims, Court Filings, PACER, Monitoring
+#### Tags
+
+- Bankruptcy
+- Claims
+- Court Filings
+- PACER
+- Monitoring
 
 #### Properties
 
 - [Documentation](https://www.bankruptcywatch.com/products/pacer-api)
 - [Getting Started](https://www.bankruptcywatch.com/api-kickoff)
-- [Postman Collection](https://documenter.getpostman.com/view/13540419/TVmLAxnr)
-- [OpenAPI](openapi/bankruptcywatch-pacer-api-openapi.yml)
+- [Postman Collection](https://documenter.getpostman.com/view/13540419/TVmLAxnr) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [OpenAPI](openapi/bankruptcywatch-pacer-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/bankruptcywatch-pacer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/bankruptcywatch-pacer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
+- [GitHub Organization](https://github.com/BKWatch)
+- [LinkedIn](https://www.linkedin.com/company/bankruptcywatch)
 - [Website](https://www.bankruptcywatch.com/)
-- [API Kickoff Guide](https://www.bankruptcywatch.com/api-kickoff)
-- [TermsOfService](https://www.bankruptcywatch.com/terms)
-
-## Features
-
-| Name | Description |
-|------|-------------|
-| Case Search | Search for bankruptcy cases across all US federal bankruptcy court districts. |
-| Docket Retrieval | Retrieve case docket entries and court filings via PACER. |
-| Claims Register | Access the full claims register for any bankruptcy case. |
-| Proof of Claim Filing | Programmatically file Proof of Claim documents with bankruptcy courts. |
-| Bankruptcy Monitoring | Automated alerts when monitored debtors or entities file for bankruptcy. |
-| Machine Learning | ML-powered document parsing and case classification. |
-| No-Code Integrations | Native integrations with Zapier, Salesforce, and Google Sheets. |
-| Webhooks | Real-time webhook notifications for bankruptcy events. |
-
-## Use Cases
-
-| Name | Description |
-|------|-------------|
-| Creditor Bankruptcy Management | Automate detection, research, and response to customer bankruptcy filings. |
-| Loan Portfolio Monitoring | Monitor loan portfolios for borrower bankruptcy filings in real time. |
-| Proof of Claim Automation | Automatically file Proof of Claim documents when debtors file bankruptcy. |
-| Legal Case Management | Manage multiple client creditor representations in bankruptcy proceedings. |
-| Debt Portfolio Acquisition | Research and evaluate bankruptcy debt for acquisition or restructuring. |
-| Compliance Reporting | Automated bankruptcy event detection for regulatory compliance. |
-
-## Artifacts
-
-### OpenAPI
-
-- [BankruptcyWatch PACER API](openapi/bankruptcywatch-pacer-api-openapi.yml)
-
-### JSON-LD
-
-- [BankruptcyWatch JSON-LD Context](json-ld/bankruptcywatch-context.jsonld)
-
-## Capabilities
-
-### Shared Per-API Definitions
-
-- [PACER API](capabilities/shared/pacer-api.yaml) — 9 operations
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Bankruptcy Monitoring](capabilities/bankruptcy-monitoring.yaml) | PACER | 7 | Creditor, Loan Officer, Bankruptcy Attorney |
-
-## Vocabulary
-
-- [BankruptcyWatch Vocabulary](vocabulary/bankruptcywatch-vocabulary.yaml) — 3 resources, 7 actions, 1 workflow, 3 personas
-
-## Rules
-
-- [BankruptcyWatch Spectral Rules](rules/bankruptcywatch-spectral-rules.yml) — 15 rules enforcing API conventions
+- [Documentation](https://www.bankruptcywatch.com/api-kickoff)
+- [Terms of Service](https://www.bankruptcywatch.com/terms)
+- [Spectral Rules](rules/bankruptcywatch-spectral-rules.yml)
+- [Vocabulary](vocabulary/bankruptcywatch-vocabulary.yaml)
+- [JSON-LD](json-ld/bankruptcywatch-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Features](undefined)
+- [Use Cases](undefined)
+- [Integrations](undefined)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
