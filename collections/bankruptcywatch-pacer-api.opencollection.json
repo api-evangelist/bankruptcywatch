@@ -1,0 +1,261 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BankruptcyWatch PACER API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Bankruptcy Cases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/cases/search",
+            "params": [
+              {
+                "name": "debtorName",
+                "value": "",
+                "type": "query",
+                "description": "Debtor name to search for"
+              },
+              {
+                "name": "caseNumber",
+                "value": "",
+                "type": "query",
+                "description": "PACER case number"
+              },
+              {
+                "name": "district",
+                "value": "",
+                "type": "query",
+                "description": "Bankruptcy court district code"
+              },
+              {
+                "name": "chapter",
+                "value": "",
+                "type": "query",
+                "description": "Bankruptcy chapter (7, 11, 13, etc.)"
+              },
+              {
+                "name": "dateFiledFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter cases filed on or after this date (ISO 8601)"
+              },
+              {
+                "name": "dateFiledTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter cases filed on or before this date (ISO 8601)"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Case status filter (open, closed, discharged)"
+              }
+            ]
+          },
+          "docs": "Search for bankruptcy cases across all US bankruptcy court districts by debtor name, case number, SSN/EIN, or other criteria."
+        },
+        {
+          "info": {
+            "name": "Get Case Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific bankruptcy case including parties, attorneys, and case status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Docket",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Case Docket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId/docket",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query",
+                "description": "Filter docket entries from this date"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query",
+                "description": "Filter docket entries to this date"
+              }
+            ]
+          },
+          "docs": "Retrieve the docket entries for a specific bankruptcy case."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId/claims",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the claims register for a specific bankruptcy case."
+        },
+        {
+          "info": {
+            "name": "File Proof of Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId/claims",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "File a Proof of Claim document with the bankruptcy court for a specific case."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Monitoring",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/monitors"
+          },
+          "docs": "Retrieve all active bankruptcy monitors for the account."
+        },
+        {
+          "info": {
+            "name": "Create Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bankruptcywatch.com/v1/monitors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a monitoring alert to track bankruptcy filings for a specific debtor, entity, or set of criteria."
+        },
+        {
+          "info": {
+            "name": "Get Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/monitors/:monitorId",
+            "params": [
+              {
+                "name": "monitorId",
+                "value": "",
+                "type": "path",
+                "description": "Monitor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details and status of a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Delete Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.bankruptcywatch.com/v1/monitors/:monitorId",
+            "params": [
+              {
+                "name": "monitorId",
+                "value": "",
+                "type": "path",
+                "description": "Monitor identifier"
+              }
+            ]
+          },
+          "docs": "Remove a bankruptcy monitor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
