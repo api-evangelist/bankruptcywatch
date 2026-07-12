@@ -45,6 +45,12 @@ apis:
       court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim
       documents, and set up automated monitoring alerts for bankruptcy filings.
 common:
+  - type: DomainSecurity
+    url: security/bankruptcywatch-domain-security.yml
+  - type: Authentication
+    url: authentication/bankruptcywatch-authentication.yml
+  - url: https://www.bankruptcywatch.com/blog/
+    type: Blog
   - type: GitHubOrganization
     url: https://github.com/BKWatch
   - type: LinkedIn
