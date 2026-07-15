@@ -45,6 +45,8 @@ apis:
       court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim
       documents, and set up automated monitoring alerts for bankruptcy filings.
 common:
+  - type: AgenticAccess
+    url: agentic-access/bankruptcywatch-agentic-access.yml
   - type: DomainSecurity
     url: security/bankruptcywatch-domain-security.yml
   - type: Authentication
