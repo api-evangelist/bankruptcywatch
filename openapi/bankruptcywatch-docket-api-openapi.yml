@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: BankruptcyWatch PACER Cases Docket API
+  description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
+  version: 1.0.0
+  contact:
+    url: https://www.bankruptcywatch.com/api-kickoff
+servers:
+- url: https://api.bankruptcywatch.com/v1
+  description: BankruptcyWatch API Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Docket
+paths:
+  /cases/{caseId}/docket:
+    get:
+      operationId: getCaseDocket
+      summary: Get Case Docket
+      description: Retrieve the docket entries for a specific bankruptcy case.
+      tags:
+      - Docket
+      parameters:
+      - name: caseId
+        in: path
+        required: true
+        description: BankruptcyWatch case identifier
+        schema:
+          type: string
+      - name: dateFrom
+        in: query
+        description: Filter docket entries from this date
+        schema:
+          type: string
+          format: date
+      - name: dateTo
+        in: query
+        description: Filter docket entries to this date
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Case docket entries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocketResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    DocketResponse:
+      type: object
+      description: Docket entries response
+      properties:
+        caseId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocketEntry'
+        totalCount:
+          type: integer
+    DocketEntry:
+      type: object
+      description: A single docket entry in a bankruptcy case
+      properties:
+        entryId:
+          type: string
+        caseId:
+          type: string
+        entryNumber:
+          type: integer
+        dateFiled:
+          type: string
+          format: date
+        description:
+          type: string
+        documentUrl:
+          type: string
+        filer:
+          type: string
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: BankruptcyWatch API key

@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: BankruptcyWatch PACER Cases API
+  description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
+  version: 1.0.0
+  contact:
+    url: https://www.bankruptcywatch.com/api-kickoff
+servers:
+- url: https://api.bankruptcywatch.com/v1
+  description: BankruptcyWatch API Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Cases
+paths:
+  /cases/search:
+    get:
+      operationId: searchCases
+      summary: Search Bankruptcy Cases
+      description: Search for bankruptcy cases across all US bankruptcy court districts by debtor name, case number, SSN/EIN, or other criteria.
+      tags:
+      - Cases
+      parameters:
+      - name: debtorName
+        in: query
+        description: Debtor name to search for
+        schema:
+          type: string
+      - name: caseNumber
+        in: query
+        description: PACER case number
+        schema:
+          type: string
+      - name: district
+        in: query
+        description: Bankruptcy court district code
+        schema:
+          type: string
+      - name: chapter
+        in: query
+        description: Bankruptcy chapter (7, 11, 13, etc.)
+        schema:
+          type: string
+      - name: dateFiledFrom
+        in: query
+        description: Filter cases filed on or after this date (ISO 8601)
+        schema:
+          type: string
+          format: date
+      - name: dateFiledTo
+        in: query
+        description: Filter cases filed on or before this date (ISO 8601)
+        schema:
+          type: string
+          format: date
+      - name: status
+        in: query
+        description: Case status filter (open, closed, discharged)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Bankruptcy case search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaseSearchResponse'
+        '401':
+          description: Unauthorized — invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /cases/{caseId}:
+    get:
+      operationId: getCase
+      summary: Get Case Details
+      description: Retrieve detailed information about a specific bankruptcy case including parties, attorneys, and case status.
+      tags:
+      - Cases
+      parameters:
+      - name: caseId
+        in: path
+        required: true
+        description: BankruptcyWatch case identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Case details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Case not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CaseSearchResponse:
+      type: object
+      description: Bankruptcy case search results
+      properties:
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        totalCount:
+          type: integer
+        pageSize:
+          type: integer
+        offset:
+          type: integer
+    Case:
+      type: object
+      description: A US bankruptcy court case
+      properties:
+        caseId:
+          type: string
+          description: BankruptcyWatch internal case ID
+        caseNumber:
+          type: string
+          description: PACER case number
+        debtorName:
+          type: string
+          description: Name of the debtor
+        chapter:
+          type: string
+          description: Bankruptcy chapter (7, 11, 13, etc.)
+        district:
+          type: string
+          description: Bankruptcy court district code
+        dateFiled:
+          type: string
+          format: date
+          description: Date the case was filed
+        status:
+          type: string
+          description: Current case status
+          enum:
+          - open
+          - closed
+          - discharged
+          - dismissed
+          - converted
+        judge:
+          type: string
+          description: Assigned bankruptcy judge
+        trustee:
+          type: string
+          description: Appointed trustee name
+        assets:
+          type: string
+          description: Asset amount range
+        liabilities:
+          type: string
+          description: Liability amount range
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: BankruptcyWatch API key

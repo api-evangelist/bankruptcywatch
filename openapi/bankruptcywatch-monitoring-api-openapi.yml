@@ -1,0 +1,190 @@
+openapi: 3.0.3
+info:
+  title: BankruptcyWatch PACER Cases Monitoring API
+  description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
+  version: 1.0.0
+  contact:
+    url: https://www.bankruptcywatch.com/api-kickoff
+servers:
+- url: https://api.bankruptcywatch.com/v1
+  description: BankruptcyWatch API Production
+security:
+- ApiKeyAuth: []
+tags:
+- name: Monitoring
+paths:
+  /monitors:
+    post:
+      operationId: createMonitor
+      summary: Create Monitor
+      description: Create a monitoring alert to track bankruptcy filings for a specific debtor, entity, or set of criteria.
+      tags:
+      - Monitoring
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonitorRequest'
+      responses:
+        '201':
+          description: Monitor created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listMonitors
+      summary: List Monitors
+      description: Retrieve all active bankruptcy monitors for the account.
+      tags:
+      - Monitoring
+      responses:
+        '200':
+          description: List of monitors
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonitorListResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /monitors/{monitorId}:
+    get:
+      operationId: getMonitor
+      summary: Get Monitor
+      description: Retrieve details and status of a specific monitor.
+      tags:
+      - Monitoring
+      parameters:
+      - name: monitorId
+        in: path
+        required: true
+        description: Monitor identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Monitor details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteMonitor
+      summary: Delete Monitor
+      description: Remove a bankruptcy monitor.
+      tags:
+      - Monitoring
+      parameters:
+      - name: monitorId
+        in: path
+        required: true
+        description: Monitor identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Monitor deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Monitor'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    MonitorRequest:
+      type: object
+      description: Bankruptcy monitoring request
+      required:
+      - monitorType
+      - criteria
+      properties:
+        monitorType:
+          type: string
+          description: Monitor type (debtor, entity, portfolio)
+        criteria:
+          type: object
+          description: Search criteria for triggering alerts
+        notificationEmail:
+          type: string
+        webhookUrl:
+          type: string
+        label:
+          type: string
+    MonitorListResponse:
+      type: object
+      description: List of monitors
+      properties:
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monitor'
+        totalCount:
+          type: integer
+    Monitor:
+      type: object
+      description: A bankruptcy monitoring alert
+      properties:
+        monitorId:
+          type: string
+        monitorType:
+          type: string
+        label:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - paused
+          - deleted
+        createdAt:
+          type: string
+          format: date-time
+        lastTriggeredAt:
+          type: string
+          format: date-time
+        alertCount:
+          type: integer
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: BankruptcyWatch API key
