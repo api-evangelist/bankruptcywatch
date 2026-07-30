@@ -9,7 +9,20 @@ tags:
   - Lending
   - PACER
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bankruptcywatch.png
 access: 3rd-Party
 created: '2024-11-25'
 modified: '2026-05-19'
@@ -20,30 +33,70 @@ description: >-
   lenders, and legal teams to search for cases, retrieve dockets, manage claims, file Proof of Claim documents, and
   automate bankruptcy monitoring across all federal bankruptcy court districts.
 apis:
-  - aid: bankruptcywatch:pacer-api
-    name: BankruptcyWatch PACER API
-    tags:
-      - Bankruptcy
-      - Claims
-      - Court Filings
-      - PACER
-      - Monitoring
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.bankruptcywatch.com/v1
-    humanURL: https://www.bankruptcywatch.com/products/pacer-api
-    properties:
-      - url: https://www.bankruptcywatch.com/products/pacer-api
-        type: Documentation
-      - url: https://www.bankruptcywatch.com/api-kickoff
-        type: GettingStarted
-      - url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
-        type: PostmanCollection
-      - url: openapi/bankruptcywatch-pacer-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      The BankruptcyWatch PACER API provides a comprehensive collection of services for interacting with US bankruptcy
-      court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim
-      documents, and set up automated monitoring alerts for bankruptcy filings.
+- aid: bankruptcywatch:bankruptcywatch-cases-api
+  name: BankruptcyWatch Cases API
+  description: The Cases API from BankruptcyWatch — 2 operation(s) for cases.
+  humanURL: https://www.bankruptcywatch.com/products/pacer-api
+  baseURL: https://api.bankruptcywatch.com/v1
+  tags:
+  - Cases
+  properties:
+  - type: OpenAPI
+    url: openapi/bankruptcywatch-cases-api-openapi.yml
+  - type: Documentation
+    url: https://www.bankruptcywatch.com/products/pacer-api
+  - type: GettingStarted
+    url: https://www.bankruptcywatch.com/api-kickoff
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
+- aid: bankruptcywatch:bankruptcywatch-claims-api
+  name: BankruptcyWatch Claims API
+  description: The Claims API from BankruptcyWatch — 1 operation(s) for claims.
+  humanURL: https://www.bankruptcywatch.com/products/pacer-api
+  baseURL: https://api.bankruptcywatch.com/v1
+  tags:
+  - Claims
+  properties:
+  - type: OpenAPI
+    url: openapi/bankruptcywatch-claims-api-openapi.yml
+  - type: Documentation
+    url: https://www.bankruptcywatch.com/products/pacer-api
+  - type: GettingStarted
+    url: https://www.bankruptcywatch.com/api-kickoff
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
+- aid: bankruptcywatch:bankruptcywatch-docket-api
+  name: BankruptcyWatch Docket API
+  description: The Docket API from BankruptcyWatch — 1 operation(s) for docket.
+  humanURL: https://www.bankruptcywatch.com/products/pacer-api
+  baseURL: https://api.bankruptcywatch.com/v1
+  tags:
+  - Docket
+  properties:
+  - type: OpenAPI
+    url: openapi/bankruptcywatch-docket-api-openapi.yml
+  - type: Documentation
+    url: https://www.bankruptcywatch.com/products/pacer-api
+  - type: GettingStarted
+    url: https://www.bankruptcywatch.com/api-kickoff
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
+- aid: bankruptcywatch:bankruptcywatch-monitoring-api
+  name: BankruptcyWatch Monitoring API
+  description: The Monitoring API from BankruptcyWatch — 2 operation(s) for monitoring.
+  humanURL: https://www.bankruptcywatch.com/products/pacer-api
+  baseURL: https://api.bankruptcywatch.com/v1
+  tags:
+  - Monitoring
+  properties:
+  - type: OpenAPI
+    url: openapi/bankruptcywatch-monitoring-api-openapi.yml
+  - type: Documentation
+    url: https://www.bankruptcywatch.com/products/pacer-api
+  - type: GettingStarted
+    url: https://www.bankruptcywatch.com/api-kickoff
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
 common:
   - type: AgenticAccess
     url: agentic-access/bankruptcywatch-agentic-access.yml
