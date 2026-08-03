@@ -1,0 +1,20 @@
+{
+  "provider": "bankruptcywatch",
+  "sources": [
+    "bankruptcywatch-cases-api-openapi.yml",
+    "bankruptcywatch-claims-api-openapi.yml",
+    "bankruptcywatch-docket-api-openapi.yml",
+    "bankruptcywatch-monitoring-api-openapi.yml"
+  ],
+  "outputs": [
+    "bankruptcywatch-cases-api-openapi.yml",
+    "bankruptcywatch-claims-api-openapi.yml",
+    "bankruptcywatch-docket-api-openapi.yml",
+    "bankruptcywatch-monitoring-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
