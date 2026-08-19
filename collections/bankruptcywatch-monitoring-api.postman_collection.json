@@ -1,0 +1,667 @@
+{
+  "item": [
+    {
+      "id": "1c6b3bec-e827-4140-a2d8-4ccc90e85570",
+      "name": "Monitoring",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "619bda2c-efe6-4705-89cb-167a5a06eb2e",
+          "name": "Create Monitor",
+          "request": {
+            "name": "Create Monitor",
+            "description": {
+              "content": "Create a monitoring alert to track bankruptcy filings for a specific debtor, entity, or set of criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "monitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"monitorType\": \"<string>\",\n  \"criteria\": \"<object>\",\n  \"notificationEmail\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c2f1631-3f07-4ba3-a3bc-9a51060264d9",
+              "name": "Monitor created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"monitorType\": \"<string>\",\n  \"criteria\": \"<object>\",\n  \"notificationEmail\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitorId\": \"string\",\n  \"monitorType\": \"string\",\n  \"label\": \"string\",\n  \"status\": \"paused\",\n  \"createdAt\": \"1997-07-10T03:57:47.037Z\",\n  \"lastTriggeredAt\": \"1946-09-20T02:43:07.255Z\",\n  \"alertCount\": 1990\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a78f1087-8412-4edc-8cc4-560f313f3289",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"monitorType\": \"<string>\",\n  \"criteria\": \"<object>\",\n  \"notificationEmail\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a87fdbc7-6f15-460c-9926-bb7c667a8372",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"monitorType\": \"<string>\",\n  \"criteria\": \"<object>\",\n  \"notificationEmail\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3daeb737-e39e-4e6a-b1f7-927d86c2403f",
+          "name": "List Monitors",
+          "request": {
+            "name": "List Monitors",
+            "description": {
+              "content": "Retrieve all active bankruptcy monitors for the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "monitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7aaa61ed-e580-482e-a856-c71279b2d630",
+              "name": "List of monitors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitors\": [\n    {\n      \"monitorId\": \"string\",\n      \"monitorType\": \"string\",\n      \"label\": \"string\",\n      \"status\": \"active\",\n      \"createdAt\": \"1968-01-05T21:06:50.852Z\",\n      \"lastTriggeredAt\": \"2023-01-11T07:51:19.155Z\",\n      \"alertCount\": 9473\n    },\n    {\n      \"monitorId\": \"string\",\n      \"monitorType\": \"string\",\n      \"label\": \"string\",\n      \"status\": \"deleted\",\n      \"createdAt\": \"2021-12-19T10:40:07.103Z\",\n      \"lastTriggeredAt\": \"2010-12-27T07:42:38.519Z\",\n      \"alertCount\": 5079\n    }\n  ],\n  \"totalCount\": 9532\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98ba5f48-8cfb-474c-b63c-129ca1d18839",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ba31fe5-e7ca-44d8-b726-24e88d148b23",
+          "name": "Get Monitor",
+          "request": {
+            "name": "Get Monitor",
+            "description": {
+              "content": "Retrieve details and status of a specific monitor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "monitors",
+                ":monitorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitorId",
+                  "description": "(Required) Monitor identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45aa12bd-3435-4033-8c23-560472a9251a",
+              "name": "Monitor details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors",
+                    ":monitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitorId",
+                      "description": "(Required) Monitor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitorId\": \"string\",\n  \"monitorType\": \"string\",\n  \"label\": \"string\",\n  \"status\": \"paused\",\n  \"createdAt\": \"1997-07-10T03:57:47.037Z\",\n  \"lastTriggeredAt\": \"1946-09-20T02:43:07.255Z\",\n  \"alertCount\": 1990\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b0f6f89-0f4e-4aea-be9d-17735e16294f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors",
+                    ":monitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitorId",
+                      "description": "(Required) Monitor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6df6b87-e9b1-408b-bdbe-a734399ce10c",
+          "name": "Delete Monitor",
+          "request": {
+            "name": "Delete Monitor",
+            "description": {
+              "content": "Remove a bankruptcy monitor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "monitors",
+                ":monitorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "monitorId",
+                  "description": "(Required) Monitor identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49cc5501-6f4e-4969-ae65-4a4e9610c178",
+              "name": "Monitor deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors",
+                    ":monitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitorId",
+                      "description": "(Required) Monitor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitorId\": \"string\",\n  \"monitorType\": \"string\",\n  \"label\": \"string\",\n  \"status\": \"paused\",\n  \"createdAt\": \"1997-07-10T03:57:47.037Z\",\n  \"lastTriggeredAt\": \"1946-09-20T02:43:07.255Z\",\n  \"alertCount\": 1990\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed8a464b-16fb-41e2-8ea1-bff95f6eaa63",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitors",
+                    ":monitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "monitorId",
+                      "description": "(Required) Monitor identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bankruptcywatch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ba6666d4-6ec7-46b7-b9c3-a7b1e97ba48e",
+    "name": "BankruptcyWatch PACER Cases Monitoring API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.",
+      "type": "text/plain"
+    }
+  }
+}

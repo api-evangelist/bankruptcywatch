@@ -1,0 +1,441 @@
+{
+  "item": [
+    {
+      "id": "a8101fb0-42ef-460c-8938-789e4a7a1a11",
+      "name": "Claims",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "869d0922-ff0b-49da-b5fa-c2578bd460c8",
+          "name": "List Claims",
+          "request": {
+            "name": "List Claims",
+            "description": {
+              "content": "Retrieve the claims register for a specific bankruptcy case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                ":caseId",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) BankruptcyWatch case identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c91beb9-a169-40ed-9a9a-7ce50a8ed403",
+              "name": "Claims register",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"caseId\": \"string\",\n  \"claims\": [\n    {\n      \"claimId\": \"string\",\n      \"caseId\": \"string\",\n      \"claimNumber\": \"string\",\n      \"creditorName\": \"string\",\n      \"claimAmount\": 8156.28494255797,\n      \"securedAmount\": 8682.762954604827,\n      \"unsecuredAmount\": 7220.875085538666,\n      \"status\": \"string\",\n      \"dateFiled\": \"1991-06-06\"\n    },\n    {\n      \"claimId\": \"string\",\n      \"caseId\": \"string\",\n      \"claimNumber\": \"string\",\n      \"creditorName\": \"string\",\n      \"claimAmount\": 6301.93573168086,\n      \"securedAmount\": 6729.799658116309,\n      \"unsecuredAmount\": 2446.3241967495396,\n      \"status\": \"string\",\n      \"dateFiled\": \"1992-07-22\"\n    }\n  ],\n  \"totalCount\": 4205\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e8a0ab9-d272-4325-ac9c-b87852b79e89",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a54a575f-7b3a-4b62-9c6f-67e9b9f5522e",
+          "name": "File Proof of Claim",
+          "request": {
+            "name": "File Proof of Claim",
+            "description": {
+              "content": "File a Proof of Claim document with the bankruptcy court for a specific case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                ":caseId",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) BankruptcyWatch case identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creditorName\": \"<string>\",\n  \"claimAmount\": \"<double>\",\n  \"basisForClaim\": \"<string>\",\n  \"creditorAddress\": \"<string>\",\n  \"securedAmount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"attachmentUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9544491-48ce-4eef-be1e-1b63cb65d0d6",
+              "name": "Proof of Claim filed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditorName\": \"<string>\",\n  \"claimAmount\": \"<double>\",\n  \"basisForClaim\": \"<string>\",\n  \"creditorAddress\": \"<string>\",\n  \"securedAmount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"attachmentUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"claimId\": \"string\",\n  \"caseId\": \"string\",\n  \"confirmationNumber\": \"string\",\n  \"status\": \"string\",\n  \"filedAt\": \"2016-02-19T09:27:11.286Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86b3095b-7cb0-4ff2-918f-4518618ceb9e",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditorName\": \"<string>\",\n  \"claimAmount\": \"<double>\",\n  \"basisForClaim\": \"<string>\",\n  \"creditorAddress\": \"<string>\",\n  \"securedAmount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"attachmentUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "881ff61e-4550-4c5a-bc4f-01ff470c7329",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditorName\": \"<string>\",\n  \"claimAmount\": \"<double>\",\n  \"basisForClaim\": \"<string>\",\n  \"creditorAddress\": \"<string>\",\n  \"securedAmount\": \"<double>\",\n  \"accountNumber\": \"<string>\",\n  \"attachmentUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bankruptcywatch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "74394880-b494-4863-93da-216f388bce01",
+    "name": "BankruptcyWatch PACER Cases Claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.",
+      "type": "text/plain"
+    }
+  }
+}

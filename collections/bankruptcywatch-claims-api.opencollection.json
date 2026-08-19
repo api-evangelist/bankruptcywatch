@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BankruptcyWatch PACER Cases Claims API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId/claims",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the claims register for a specific bankruptcy case."
+        },
+        {
+          "info": {
+            "name": "File Proof of Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.bankruptcywatch.com/v1/cases/:caseId/claims",
+            "params": [
+              {
+                "name": "caseId",
+                "value": "",
+                "type": "path",
+                "description": "BankruptcyWatch case identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "File a Proof of Claim document with the bankruptcy court for a specific case."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

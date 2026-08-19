@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "2dd69463-7ccf-4c18-ae87-2c0c88e95902",
+      "name": "Docket",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "23bdec10-d7fa-443e-bed1-5ccba572930c",
+          "name": "Get Case Docket",
+          "request": {
+            "name": "Get Case Docket",
+            "description": {
+              "content": "Retrieve the docket entries for a specific bankruptcy case.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                ":caseId",
+                "docket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<date>",
+                  "description": "Filter docket entries from this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<date>",
+                  "description": "Filter docket entries to this date"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) BankruptcyWatch case identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b139caac-2738-4cee-884a-c97b1c97edd5",
+              "name": "Case docket entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "docket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"caseId\": \"string\",\n  \"entries\": [\n    {\n      \"entryId\": \"string\",\n      \"caseId\": \"string\",\n      \"entryNumber\": 8152,\n      \"dateFiled\": \"1982-02-25\",\n      \"description\": \"string\",\n      \"documentUrl\": \"string\",\n      \"filer\": \"string\"\n    },\n    {\n      \"entryId\": \"string\",\n      \"caseId\": \"string\",\n      \"entryNumber\": 6327,\n      \"dateFiled\": \"1992-10-28\",\n      \"description\": \"string\",\n      \"documentUrl\": \"string\",\n      \"filer\": \"string\"\n    }\n  ],\n  \"totalCount\": 8074\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6efa56c-1278-4c71-9b9a-69a443e3b6d1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId",
+                    "docket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bankruptcywatch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e246198f-ca24-40f3-9e36-24e0ce39a0c1",
+    "name": "BankruptcyWatch PACER Cases Docket API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.",
+      "type": "text/plain"
+    }
+  }
+}

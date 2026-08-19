@@ -1,0 +1,474 @@
+{
+  "item": [
+    {
+      "id": "2e20f518-ec6e-455e-b774-3f90a1df820d",
+      "name": "Cases",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eac1068e-326c-43c9-8b03-a0b665ca7d56",
+          "name": "Search Bankruptcy Cases",
+          "request": {
+            "name": "Search Bankruptcy Cases",
+            "description": {
+              "content": "Search for bankruptcy cases across all US bankruptcy court districts by debtor name, case number, SSN/EIN, or other criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "debtorName",
+                  "value": "<string>",
+                  "description": "Debtor name to search for"
+                },
+                {
+                  "disabled": false,
+                  "key": "caseNumber",
+                  "value": "<string>",
+                  "description": "PACER case number"
+                },
+                {
+                  "disabled": false,
+                  "key": "district",
+                  "value": "<string>",
+                  "description": "Bankruptcy court district code"
+                },
+                {
+                  "disabled": false,
+                  "key": "chapter",
+                  "value": "<string>",
+                  "description": "Bankruptcy chapter (7, 11, 13, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateFiledFrom",
+                  "value": "<date>",
+                  "description": "Filter cases filed on or after this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateFiledTo",
+                  "value": "<date>",
+                  "description": "Filter cases filed on or before this date (ISO 8601)"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Case status filter (open, closed, discharged)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f74b5372-8b51-44df-8f7b-79322a1e0e5f",
+              "name": "Bankruptcy case search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debtorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "district",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateFiledFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateFiledTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cases\": [\n    {\n      \"caseId\": \"string\",\n      \"caseNumber\": \"string\",\n      \"debtorName\": \"string\",\n      \"chapter\": \"string\",\n      \"district\": \"string\",\n      \"dateFiled\": \"2019-11-07\",\n      \"status\": \"discharged\",\n      \"judge\": \"string\",\n      \"trustee\": \"string\",\n      \"assets\": \"string\",\n      \"liabilities\": \"string\"\n    },\n    {\n      \"caseId\": \"string\",\n      \"caseNumber\": \"string\",\n      \"debtorName\": \"string\",\n      \"chapter\": \"string\",\n      \"district\": \"string\",\n      \"dateFiled\": \"2009-07-27\",\n      \"status\": \"closed\",\n      \"judge\": \"string\",\n      \"trustee\": \"string\",\n      \"assets\": \"string\",\n      \"liabilities\": \"string\"\n    }\n  ],\n  \"totalCount\": 1167,\n  \"pageSize\": 6403,\n  \"offset\": 9460\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7d1dad8-f3b9-4b30-a85d-d84c9b41a34f",
+              "name": "Unauthorized — invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "debtorName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caseNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "district",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "chapter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateFiledFrom",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "dateFiledTo",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "944ca297-e97d-44e9-996c-5e2f36508e3f",
+          "name": "Get Case Details",
+          "request": {
+            "name": "Get Case Details",
+            "description": {
+              "content": "Retrieve detailed information about a specific bankruptcy case including parties, attorneys, and case status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                ":caseId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "caseId",
+                  "description": "(Required) BankruptcyWatch case identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7f99fd3-7075-4f41-b1eb-0fbddede7ff0",
+              "name": "Case details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"caseId\": \"string\",\n  \"caseNumber\": \"string\",\n  \"debtorName\": \"string\",\n  \"chapter\": \"string\",\n  \"district\": \"string\",\n  \"dateFiled\": \"1985-01-03\",\n  \"status\": \"open\",\n  \"judge\": \"string\",\n  \"trustee\": \"string\",\n  \"assets\": \"string\",\n  \"liabilities\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bea95336-40e0-46d6-b3d9-9ca96ef4b94f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "385e409d-a346-4bed-8fe5-ea8e05d087e5",
+              "name": "Case not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    ":caseId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "caseId",
+                      "description": "(Required) BankruptcyWatch case identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": \"string\",\n  \"message\": \"string\",\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.bankruptcywatch.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6239faa1-9855-4872-8a39-0cb2ad8874f4",
+    "name": "BankruptcyWatch PACER Cases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.",
+      "type": "text/plain"
+    }
+  }
+}
