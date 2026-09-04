@@ -28,17 +28,18 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bankruptcywatch.png
 access: 3rd-Party
 created: '2024-11-25'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 description: >-
   BankruptcyWatch is the proven creditor bankruptcy platform built with machine learning and intelligent automation to
   elevate every bankruptcy interaction. The PACER API provides access to US bankruptcy court data enabling creditors,
