@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BankruptcyWatch PACER Cases Claims API
+  title: BankruptcyWatch PACER Claims API
   description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
   version: 1.0.0
   contact:
@@ -106,6 +106,21 @@ components:
         dateFiled:
           type: string
           format: date
+    ProofOfClaimResponse:
+      type: object
+      description: Proof of Claim filing response
+      properties:
+        claimId:
+          type: string
+        caseId:
+          type: string
+        confirmationNumber:
+          type: string
+        status:
+          type: string
+        filedAt:
+          type: string
+          format: date-time
     ProofOfClaimRequest:
       type: object
       description: Proof of Claim filing request
@@ -132,31 +147,6 @@ components:
           type: array
           items:
             type: string
-    ProofOfClaimResponse:
-      type: object
-      description: Proof of Claim filing response
-      properties:
-        claimId:
-          type: string
-        caseId:
-          type: string
-        confirmationNumber:
-          type: string
-        status:
-          type: string
-        filedAt:
-          type: string
-          format: date-time
-    ErrorResponse:
-      type: object
-      description: API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        requestId:
-          type: string
     ClaimsResponse:
       type: object
       description: Claims register response
@@ -169,6 +159,16 @@ components:
             $ref: '#/components/schemas/Claim'
         totalCount:
           type: integer
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

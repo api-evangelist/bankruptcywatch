@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BankruptcyWatch PACER Cases Monitoring API
+  title: BankruptcyWatch PACER Monitoring API
   description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
   version: 1.0.0
   contact:
@@ -138,16 +138,6 @@ components:
           type: string
         label:
           type: string
-    MonitorListResponse:
-      type: object
-      description: List of monitors
-      properties:
-        monitors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Monitor'
-        totalCount:
-          type: integer
     Monitor:
       type: object
       description: A bankruptcy monitoring alert
@@ -182,6 +172,16 @@ components:
           type: string
         requestId:
           type: string
+    MonitorListResponse:
+      type: object
+      description: List of monitors
+      properties:
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monitor'
+        totalCount:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

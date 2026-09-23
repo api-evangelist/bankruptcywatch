@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BankruptcyWatch PACER Cases Docket API
+  title: BankruptcyWatch PACER Docket API
   description: The BankruptcyWatch PACER API provides a comprehensive suite of services for interacting with United States Bankruptcy Court data via PACER (Public Access to Court Electronic Records). The API enables creditors, lenders, and legal teams to search for bankruptcy cases, retrieve case details, file documents, monitor case activity, and automate bankruptcy workflows including Proof of Claim filing and loan restructuring.
   version: 1.0.0
   contact:
@@ -54,18 +54,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    DocketResponse:
-      type: object
-      description: Docket entries response
-      properties:
-        caseId:
-          type: string
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocketEntry'
-        totalCount:
-          type: integer
     DocketEntry:
       type: object
       description: A single docket entry in a bankruptcy case
@@ -95,6 +83,18 @@ components:
           type: string
         requestId:
           type: string
+    DocketResponse:
+      type: object
+      description: Docket entries response
+      properties:
+        caseId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocketEntry'
+        totalCount:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
