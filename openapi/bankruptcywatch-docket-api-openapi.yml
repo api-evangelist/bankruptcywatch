@@ -73,16 +73,6 @@ components:
           type: string
         filer:
           type: string
-    ErrorResponse:
-      type: object
-      description: API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        requestId:
-          type: string
     DocketResponse:
       type: object
       description: Docket entries response
@@ -95,6 +85,16 @@ components:
             $ref: '#/components/schemas/DocketEntry'
         totalCount:
           type: integer
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

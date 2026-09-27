@@ -119,25 +119,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    MonitorRequest:
+    MonitorListResponse:
       type: object
-      description: Bankruptcy monitoring request
-      required:
-      - monitorType
-      - criteria
+      description: List of monitors
       properties:
-        monitorType:
-          type: string
-          description: Monitor type (debtor, entity, portfolio)
-        criteria:
-          type: object
-          description: Search criteria for triggering alerts
-        notificationEmail:
-          type: string
-        webhookUrl:
-          type: string
-        label:
-          type: string
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monitor'
+        totalCount:
+          type: integer
     Monitor:
       type: object
       description: A bankruptcy monitoring alert
@@ -162,6 +153,25 @@ components:
           format: date-time
         alertCount:
           type: integer
+    MonitorRequest:
+      type: object
+      description: Bankruptcy monitoring request
+      required:
+      - monitorType
+      - criteria
+      properties:
+        monitorType:
+          type: string
+          description: Monitor type (debtor, entity, portfolio)
+        criteria:
+          type: object
+          description: Search criteria for triggering alerts
+        notificationEmail:
+          type: string
+        webhookUrl:
+          type: string
+        label:
+          type: string
     ErrorResponse:
       type: object
       description: API error response
@@ -172,16 +182,6 @@ components:
           type: string
         requestId:
           type: string
-    MonitorListResponse:
-      type: object
-      description: List of monitors
-      properties:
-        monitors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Monitor'
-        totalCount:
-          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

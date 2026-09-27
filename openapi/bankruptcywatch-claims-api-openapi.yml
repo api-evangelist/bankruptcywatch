@@ -80,32 +80,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Claim:
-      type: object
-      description: A claim in a bankruptcy case claims register
-      properties:
-        claimId:
-          type: string
-        caseId:
-          type: string
-        claimNumber:
-          type: string
-        creditorName:
-          type: string
-        claimAmount:
-          type: number
-          format: double
-        securedAmount:
-          type: number
-          format: double
-        unsecuredAmount:
-          type: number
-          format: double
-        status:
-          type: string
-        dateFiled:
-          type: string
-          format: date
     ProofOfClaimResponse:
       type: object
       description: Proof of Claim filing response
@@ -121,6 +95,28 @@ components:
         filedAt:
           type: string
           format: date-time
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+    ClaimsResponse:
+      type: object
+      description: Claims register response
+      properties:
+        caseId:
+          type: string
+        claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        totalCount:
+          type: integer
     ProofOfClaimRequest:
       type: object
       description: Proof of Claim filing request
@@ -147,28 +143,32 @@ components:
           type: array
           items:
             type: string
-    ClaimsResponse:
+    Claim:
       type: object
-      description: Claims register response
+      description: A claim in a bankruptcy case claims register
       properties:
+        claimId:
+          type: string
         caseId:
           type: string
-        claims:
-          type: array
-          items:
-            $ref: '#/components/schemas/Claim'
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: API error response
-      properties:
-        errorCode:
+        claimNumber:
           type: string
-        message:
+        creditorName:
           type: string
-        requestId:
+        claimAmount:
+          type: number
+          format: double
+        securedAmount:
+          type: number
+          format: double
+        unsecuredAmount:
+          type: number
+          format: double
+        status:
           type: string
+        dateFiled:
+          type: string
+          format: date
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
