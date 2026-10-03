@@ -54,6 +54,28 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+    DocketResponse:
+      type: object
+      description: Docket entries response
+      properties:
+        caseId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocketEntry'
+        totalCount:
+          type: integer
     DocketEntry:
       type: object
       description: A single docket entry in a bankruptcy case
@@ -72,28 +94,6 @@ components:
         documentUrl:
           type: string
         filer:
-          type: string
-    DocketResponse:
-      type: object
-      description: Docket entries response
-      properties:
-        caseId:
-          type: string
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocketEntry'
-        totalCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        requestId:
           type: string
   securitySchemes:
     ApiKeyAuth:
