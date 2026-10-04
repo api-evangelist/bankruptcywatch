@@ -80,6 +80,44 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ProofOfClaimRequest:
+      type: object
+      description: Proof of Claim filing request
+      required:
+      - creditorName
+      - claimAmount
+      - basisForClaim
+      properties:
+        creditorName:
+          type: string
+        creditorAddress:
+          type: string
+        claimAmount:
+          type: number
+          format: double
+        securedAmount:
+          type: number
+          format: double
+        basisForClaim:
+          type: string
+        accountNumber:
+          type: string
+        attachmentUrls:
+          type: array
+          items:
+            type: string
+    ClaimsResponse:
+      type: object
+      description: Claims register response
+      properties:
+        caseId:
+          type: string
+        claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        totalCount:
+          type: integer
     ProofOfClaimResponse:
       type: object
       description: Proof of Claim filing response
@@ -121,44 +159,6 @@ components:
         dateFiled:
           type: string
           format: date
-    ProofOfClaimRequest:
-      type: object
-      description: Proof of Claim filing request
-      required:
-      - creditorName
-      - claimAmount
-      - basisForClaim
-      properties:
-        creditorName:
-          type: string
-        creditorAddress:
-          type: string
-        claimAmount:
-          type: number
-          format: double
-        securedAmount:
-          type: number
-          format: double
-        basisForClaim:
-          type: string
-        accountNumber:
-          type: string
-        attachmentUrls:
-          type: array
-          items:
-            type: string
-    ClaimsResponse:
-      type: object
-      description: Claims register response
-      properties:
-        caseId:
-          type: string
-        claims:
-          type: array
-          items:
-            $ref: '#/components/schemas/Claim'
-        totalCount:
-          type: integer
     ErrorResponse:
       type: object
       description: API error response

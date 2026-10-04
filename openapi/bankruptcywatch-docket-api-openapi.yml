@@ -64,18 +64,6 @@ components:
           type: string
         requestId:
           type: string
-    DocketResponse:
-      type: object
-      description: Docket entries response
-      properties:
-        caseId:
-          type: string
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/DocketEntry'
-        totalCount:
-          type: integer
     DocketEntry:
       type: object
       description: A single docket entry in a bankruptcy case
@@ -95,6 +83,18 @@ components:
           type: string
         filer:
           type: string
+    DocketResponse:
+      type: object
+      description: Docket entries response
+      properties:
+        caseId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocketEntry'
+        totalCount:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

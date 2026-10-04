@@ -116,20 +116,6 @@ components:
           type: string
         requestId:
           type: string
-    CaseSearchResponse:
-      type: object
-      description: Bankruptcy case search results
-      properties:
-        cases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Case'
-        totalCount:
-          type: integer
-        pageSize:
-          type: integer
-        offset:
-          type: integer
     Case:
       type: object
       description: A US bankruptcy court case
@@ -174,6 +160,20 @@ components:
         liabilities:
           type: string
           description: Liability amount range
+    CaseSearchResponse:
+      type: object
+      description: Bankruptcy case search results
+      properties:
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        totalCount:
+          type: integer
+        pageSize:
+          type: integer
+        offset:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

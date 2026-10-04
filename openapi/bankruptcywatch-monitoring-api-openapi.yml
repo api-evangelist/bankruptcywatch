@@ -119,6 +119,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: API error response
+      properties:
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
+    MonitorListResponse:
+      type: object
+      description: List of monitors
+      properties:
+        monitors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Monitor'
+        totalCount:
+          type: integer
     Monitor:
       type: object
       description: A bankruptcy monitoring alert
@@ -142,26 +162,6 @@ components:
           type: string
           format: date-time
         alertCount:
-          type: integer
-    ErrorResponse:
-      type: object
-      description: API error response
-      properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        requestId:
-          type: string
-    MonitorListResponse:
-      type: object
-      description: List of monitors
-      properties:
-        monitors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Monitor'
-        totalCount:
           type: integer
     MonitorRequest:
       type: object
