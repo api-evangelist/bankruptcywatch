@@ -111,6 +111,12 @@ apis:
   - type: PostmanCollection
     url: https://documenter.getpostman.com/view/13540419/TVmLAxnr
 common:
+  - type: Plans
+    url: plans/bankruptcywatch-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bankruptcywatch-rate-limits.yml
+  - type: FinOps
+    url: finops/bankruptcywatch-finops.yml
   - type: AgenticAccess
     url: agentic-access/bankruptcywatch-agentic-access.yml
   - type: DomainSecurity
