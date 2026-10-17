@@ -119,15 +119,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    MonitorRequest:
       type: object
-      description: API error response
+      description: Bankruptcy monitoring request
+      required:
+      - monitorType
+      - criteria
       properties:
-        errorCode:
+        monitorType:
           type: string
-        message:
+          description: Monitor type (debtor, entity, portfolio)
+        criteria:
+          type: object
+          description: Search criteria for triggering alerts
+        notificationEmail:
           type: string
-        requestId:
+        webhookUrl:
+          type: string
+        label:
           type: string
     MonitorListResponse:
       type: object
@@ -163,24 +172,15 @@ components:
           format: date-time
         alertCount:
           type: integer
-    MonitorRequest:
+    ErrorResponse:
       type: object
-      description: Bankruptcy monitoring request
-      required:
-      - monitorType
-      - criteria
+      description: API error response
       properties:
-        monitorType:
+        errorCode:
           type: string
-          description: Monitor type (debtor, entity, portfolio)
-        criteria:
-          type: object
-          description: Search criteria for triggering alerts
-        notificationEmail:
+        message:
           type: string
-        webhookUrl:
-          type: string
-        label:
+        requestId:
           type: string
   securitySchemes:
     ApiKeyAuth:

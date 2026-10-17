@@ -80,32 +80,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ProofOfClaimRequest:
-      type: object
-      description: Proof of Claim filing request
-      required:
-      - creditorName
-      - claimAmount
-      - basisForClaim
-      properties:
-        creditorName:
-          type: string
-        creditorAddress:
-          type: string
-        claimAmount:
-          type: number
-          format: double
-        securedAmount:
-          type: number
-          format: double
-        basisForClaim:
-          type: string
-        accountNumber:
-          type: string
-        attachmentUrls:
-          type: array
-          items:
-            type: string
     ClaimsResponse:
       type: object
       description: Claims register response
@@ -118,21 +92,16 @@ components:
             $ref: '#/components/schemas/Claim'
         totalCount:
           type: integer
-    ProofOfClaimResponse:
+    ErrorResponse:
       type: object
-      description: Proof of Claim filing response
+      description: API error response
       properties:
-        claimId:
+        errorCode:
           type: string
-        caseId:
+        message:
           type: string
-        confirmationNumber:
+        requestId:
           type: string
-        status:
-          type: string
-        filedAt:
-          type: string
-          format: date-time
     Claim:
       type: object
       description: A claim in a bankruptcy case claims register
@@ -159,16 +128,47 @@ components:
         dateFiled:
           type: string
           format: date
-    ErrorResponse:
+    ProofOfClaimResponse:
       type: object
-      description: API error response
+      description: Proof of Claim filing response
       properties:
-        errorCode:
+        claimId:
           type: string
-        message:
+        caseId:
           type: string
-        requestId:
+        confirmationNumber:
           type: string
+        status:
+          type: string
+        filedAt:
+          type: string
+          format: date-time
+    ProofOfClaimRequest:
+      type: object
+      description: Proof of Claim filing request
+      required:
+      - creditorName
+      - claimAmount
+      - basisForClaim
+      properties:
+        creditorName:
+          type: string
+        creditorAddress:
+          type: string
+        claimAmount:
+          type: number
+          format: double
+        securedAmount:
+          type: number
+          format: double
+        basisForClaim:
+          type: string
+        accountNumber:
+          type: string
+        attachmentUrls:
+          type: array
+          items:
+            type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

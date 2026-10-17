@@ -106,16 +106,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    CaseSearchResponse:
       type: object
-      description: API error response
+      description: Bankruptcy case search results
       properties:
-        errorCode:
-          type: string
-        message:
-          type: string
-        requestId:
-          type: string
+        cases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Case'
+        totalCount:
+          type: integer
+        pageSize:
+          type: integer
+        offset:
+          type: integer
     Case:
       type: object
       description: A US bankruptcy court case
@@ -160,20 +164,16 @@ components:
         liabilities:
           type: string
           description: Liability amount range
-    CaseSearchResponse:
+    ErrorResponse:
       type: object
-      description: Bankruptcy case search results
+      description: API error response
       properties:
-        cases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Case'
-        totalCount:
-          type: integer
-        pageSize:
-          type: integer
-        offset:
-          type: integer
+        errorCode:
+          type: string
+        message:
+          type: string
+        requestId:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
