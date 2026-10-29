@@ -1,4 +1,4 @@
-# BankruptcyWatch (bankruptcywatch)
+# BankruptcyWatch
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,69 +66,193 @@
 
 BankruptcyWatch is the proven creditor bankruptcy platform built with machine learning and intelligent automation to elevate every bankruptcy interaction. The PACER API provides access to US bankruptcy court data enabling creditors, lenders, and legal teams to search for cases, retrieve dockets, manage claims, file Proof of Claim documents, and automate bankruptcy monitoring across all federal bankruptcy court districts.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/bankruptcywatch/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/bankruptcywatch/refs/heads/main/apis.yml)
+**Areas:** Bankruptcy · Compliance · Court Data · Legal · Lending · PACER
 
-## Scope
+## BankruptcyWatch on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for BankruptcyWatch is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bankruptcywatch/](https://apis.io/providers/bankruptcywatch/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Bankruptcy
-- Compliance
-- Court Data
-- Legal
-- Lending
-- PACER
+- [BankruptcyWatch Cases API](https://apis.io/apis/bankruptcywatch/bankruptcywatch-cases-api/) — The Cases API from BankruptcyWatch — 2 operation(s) for cases.
+- [BankruptcyWatch Claims API](https://apis.io/apis/bankruptcywatch/bankruptcywatch-claims-api/) — The Claims API from BankruptcyWatch — 1 operation(s) for claims.
+- [BankruptcyWatch Docket API](https://apis.io/apis/bankruptcywatch/bankruptcywatch-docket-api/) — The Docket API from BankruptcyWatch — 1 operation(s) for docket.
+- [BankruptcyWatch Monitoring API](https://apis.io/apis/bankruptcywatch/bankruptcywatch-monitoring-api/) — The Monitoring API from BankruptcyWatch — 2 operation(s) for monitoring.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-25
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### BankruptcyWatch PACER API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The BankruptcyWatch PACER API provides a comprehensive collection of services for interacting with US bankruptcy court data. Search cases across all districts, retrieve dockets and claims registers, file Proof of Claim documents, and set up automated monitoring alerts for bankruptcy filings.
+- [Bankruptcywatch Agentic Access](https://apis.io/agentic-access/bankruptcywatch/bankruptcywatch-agentic-access/)
 
-- **Human URL:** [https://www.bankruptcywatch.com/products/pacer-api](https://www.bankruptcywatch.com/products/pacer-api)
-- **Base URL:** `https://api.bankruptcywatch.com/v1`
+#### JSON Schema (12)
 
-#### Tags
+The data models the API reads and writes.
 
-- Bankruptcy
-- Claims
-- Court Filings
-- PACER
-- Monitoring
+- [Case](https://apis.io/schemas/bankruptcywatch/case/)
+- [CaseSearchResponse](https://apis.io/schemas/bankruptcywatch/casesearchresponse/)
+- [Claim](https://apis.io/schemas/bankruptcywatch/claim/)
+- [ClaimsResponse](https://apis.io/schemas/bankruptcywatch/claimsresponse/)
+- [DocketEntry](https://apis.io/schemas/bankruptcywatch/docketentry/)
+- [DocketResponse](https://apis.io/schemas/bankruptcywatch/docketresponse/)
+- [ErrorResponse](https://apis.io/schemas/bankruptcywatch/errorresponse/)
+- [Monitor](https://apis.io/schemas/bankruptcywatch/monitor/)
+- [MonitorListResponse](https://apis.io/schemas/bankruptcywatch/monitorlistresponse/)
+- [MonitorRequest](https://apis.io/schemas/bankruptcywatch/monitorrequest/)
+- [ProofOfClaimRequest](https://apis.io/schemas/bankruptcywatch/proofofclaimrequest/)
+- [ProofOfClaimResponse](https://apis.io/schemas/bankruptcywatch/proofofclaimresponse/)
 
-#### Properties
+#### JSON Structure (12)
 
-- [Documentation](https://www.bankruptcywatch.com/products/pacer-api)
-- [Getting Started](https://www.bankruptcywatch.com/api-kickoff)
-- [Postman Collection](https://documenter.getpostman.com/view/13540419/TVmLAxnr) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [OpenAPI](openapi/bankruptcywatch-pacer-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/bankruptcywatch-pacer-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/bankruptcywatch-pacer-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Case Structure](https://apis.io/json-structure/bankruptcywatch/case-structure/)
+- [Casesearchresponse Structure](https://apis.io/json-structure/bankruptcywatch/casesearchresponse-structure/)
+- [Claim Structure](https://apis.io/json-structure/bankruptcywatch/claim-structure/)
+- [Claimsresponse Structure](https://apis.io/json-structure/bankruptcywatch/claimsresponse-structure/)
+- [Docketentry Structure](https://apis.io/json-structure/bankruptcywatch/docketentry-structure/)
+- [Docketresponse Structure](https://apis.io/json-structure/bankruptcywatch/docketresponse-structure/)
+- [Errorresponse Structure](https://apis.io/json-structure/bankruptcywatch/errorresponse-structure/)
+- [Monitor Structure](https://apis.io/json-structure/bankruptcywatch/monitor-structure/)
+- [Monitorlistresponse Structure](https://apis.io/json-structure/bankruptcywatch/monitorlistresponse-structure/)
+- [Monitorrequest Structure](https://apis.io/json-structure/bankruptcywatch/monitorrequest-structure/)
+- [Proofofclaimrequest Structure](https://apis.io/json-structure/bankruptcywatch/proofofclaimrequest-structure/)
+- [Proofofclaimresponse Structure](https://apis.io/json-structure/bankruptcywatch/proofofclaimresponse-structure/)
 
-- [GitHub Organization](https://github.com/BKWatch)
-- [LinkedIn](https://www.linkedin.com/company/bankruptcywatch)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Bankruptcywatch Context](https://apis.io/jsonld/bankruptcywatch/bankruptcywatch-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Bankruptcywatch Vocabulary](https://apis.io/vocabularies/bankruptcywatch/bankruptcywatch-vocabulary/)
+
+#### Examples (12)
+
+Example requests and responses.
+
+- [Case Example](https://apis.io/examples/bankruptcywatch/case-example/)
+- [Casesearchresponse Example](https://apis.io/examples/bankruptcywatch/casesearchresponse-example/)
+- [Claim Example](https://apis.io/examples/bankruptcywatch/claim-example/)
+- [Claimsresponse Example](https://apis.io/examples/bankruptcywatch/claimsresponse-example/)
+- [Docketentry Example](https://apis.io/examples/bankruptcywatch/docketentry-example/)
+- [Docketresponse Example](https://apis.io/examples/bankruptcywatch/docketresponse-example/)
+- [Errorresponse Example](https://apis.io/examples/bankruptcywatch/errorresponse-example/)
+- [Monitor Example](https://apis.io/examples/bankruptcywatch/monitor-example/)
+- [Monitorlistresponse Example](https://apis.io/examples/bankruptcywatch/monitorlistresponse-example/)
+- [Monitorrequest Example](https://apis.io/examples/bankruptcywatch/monitorrequest-example/)
+- [Proofofclaimrequest Example](https://apis.io/examples/bankruptcywatch/proofofclaimrequest-example/)
+- [Proofofclaimresponse Example](https://apis.io/examples/bankruptcywatch/proofofclaimresponse-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [BankruptcyWatch PACER Cases API](https://apis.io/collections/bankruptcywatch/open-bankruptcywatch-cases-api/)
+- [BankruptcyWatch PACER Cases Claims API](https://apis.io/collections/bankruptcywatch/open-bankruptcywatch-claims-api/)
+- [BankruptcyWatch PACER Cases Docket API](https://apis.io/collections/bankruptcywatch/open-bankruptcywatch-docket-api/)
+- [BankruptcyWatch PACER Cases Monitoring API](https://apis.io/collections/bankruptcywatch/open-bankruptcywatch-monitoring-api/)
+- [BankruptcyWatch PACER API](https://apis.io/collections/bankruptcywatch/open-bankruptcywatch-pacer-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [BankruptcyWatch — jsonschema rules](https://apis.io/rules/bankruptcywatch/bankruptcywatch-jsonschema-spectral-rules/)
+- [BankruptcyWatch API Rules](https://apis.io/rules/bankruptcywatch/bankruptcywatch-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bankruptcywatch Authentication](https://apis.io/security/bankruptcywatch/bankruptcywatch-authentication/)
+- [Bankruptcywatch Domain Security](https://apis.io/security/bankruptcywatch/bankruptcywatch-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Bankruptcywatch Plans Pricing](https://apis.io/plans/bankruptcywatch/bankruptcywatch-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bankruptcywatch Rate Limits](https://apis.io/rate-limits/bankruptcywatch/bankruptcywatch-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Bankruptcywatch Finops](https://apis.io/finops/bankruptcywatch/bankruptcywatch-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.bankruptcywatch.com/)
 - [Documentation](https://www.bankruptcywatch.com/api-kickoff)
-- [Terms of Service](https://www.bankruptcywatch.com/terms)
-- [Spectral Rules](rules/bankruptcywatch-spectral-rules.yml)
-- [Vocabulary](vocabulary/bankruptcywatch-vocabulary.yaml)
-- [JSON-LD](json-ld/bankruptcywatch-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://www.bankruptcywatch.com/blog/)
+- [Terms of service](https://www.bankruptcywatch.com/terms)
+- [GitHub](https://github.com/BKWatch)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 34.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 40.5 |
+| Access clarity | 7.9 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bankruptcywatch/](https://apis.io/providers/bankruptcywatch/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for BankruptcyWatch: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bankruptcywatch/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
